@@ -11,9 +11,6 @@ export default class MessageListItem extends Component {
           <div className="message-text">{message.text}</div>
         </div>
         <h5 className="message-author-name">{message.authorName}</h5>
-        <div className="message-time">
-          {new Date(message.timestamp).toLocaleTimeString()}
-        </div>
       </li>
     );
   }

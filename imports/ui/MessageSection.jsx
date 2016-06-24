@@ -35,7 +35,7 @@ export default class MessageSection extends Component {
           {messageListItems}
         </ul>
         <div className="composer">
-          <MessageComposer threadID={500}/>
+          <MessageComposer threadID={500} displayName={this.props.displayName}/>
           <i className="fa fa-paper-plane"></i>
         </div>
       </div>
