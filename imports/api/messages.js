@@ -13,12 +13,7 @@ if (Meteor.isServer) {
 Meteor.methods({
   'messages.insert'(text, threadId, authorName) {
     check(text, String);
- 
-    // Make sure the user is logged in before inserting a task
-    if (! this.userId) {
-      throw new Meteor.Error('not-authorized');
-    }
- 
+
     Messages.insert({
       text: text,
       threadId: threadId,

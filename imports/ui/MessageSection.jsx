@@ -32,11 +32,11 @@ export default class MessageSection extends Component {
     let messageListItems = this.props.messages.map(getMessageListItem);
     return (
       <div className="message-section">
-        <h3 className="message-thread-heading">{this.state.thread.name}</h3>
+        <h3 className="message-thread-heading">#{this.props.postalCode}</h3>
         <ul className="message-list" ref="messageList">
           {messageListItems}
         </ul>
-        <MessageComposer threadID={this.state.thread.id}/>
+        <MessageComposer threadID={this.state.thread.id} displayName={this.props.displayName}/>
       </div>
     );
   }

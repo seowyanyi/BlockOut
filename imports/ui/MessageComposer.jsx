@@ -16,13 +16,12 @@ export default class MessageComposer extends Component {
     this.setState({text: event.target.value})
   }
 
-
   _onKeyDown(event) {
     if (event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault();
       var text = this.state.text.trim();
       if (text) {
-          Meteor.call('messages.insert', text, this.props.threadID, Meteor.user().username);
+          Meteor.call('messages.insert', text, this.props.threadID, this.props.displayName);
       }
       this.setState({text: ''});
     }
