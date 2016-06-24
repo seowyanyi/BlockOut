@@ -32,11 +32,18 @@ export default class MessageSection extends Component {
     let messageListItems = this.props.messages.map(getMessageListItem);
     return (
       <div className="message-section">
-        <h3 className="message-thread-heading">{this.state.thread.name}</h3>
+        <div className="message-thread-heading">
+          <i className="fa fa-angle-left"></i>
+          <span>{this.state.thread.name}</span>
+          <i className="fa fa-bars"></i>
+        </div>
         <ul className="message-list" ref="messageList">
           {messageListItems}
         </ul>
-        <MessageComposer threadID={this.state.thread.id}/>
+        <div className="composer">
+          <MessageComposer threadID={this.state.thread.id}/>
+          <i className="fa fa-paper-plane"></i>
+        </div>
       </div>
     );
   }
