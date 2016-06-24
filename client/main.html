@@ -1,8 +1,20 @@
 <head>
-  <title>Chat</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chat</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.20.1/mapbox-gl.css' rel='stylesheet' />
 </head>
- 
+
 <body>
-  <div id="render-target"></div>
+	<div id='map'></div>
+	<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibGF1aXNlcyIsImEiOiJjaXB0dzVjaTcwNm8zZnVtMmRoaGZ1NHhmIn0.C8Q7Qd551av2yKSKIVqN2Q';
+	var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/lauises/ciptw64fj003ddmnodbxt0hv8', //stylesheet location
+    center: [103.848538, 1.332264], // starting position
+    zoom: 15.7 // starting zoom
+});
+	</script>
+	<div id="render-target"></div>
 </body>

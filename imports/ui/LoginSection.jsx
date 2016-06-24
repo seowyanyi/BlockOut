@@ -28,21 +28,25 @@ export default class LoginSection extends Component {
     return (
       <div className="login-section">
         <form>
-          <br/>Postal Code<br/>
-          <input 
-            type="text" 
-            name="postal-code" 
-            placeholder="247964"
-            onChange={this._onChangePostalCode.bind(this)}
+          <fieldset>
+            <h3>Postal Code</h3>
+            <input 
+              type="text" 
+              name="postal-code" 
+              placeholder="247964"
+              onChange={this._onChangePostalCode.bind(this)}
+              />
+          </fieldset>
+          <fieldset>
+            <h3>Display Name</h3>
+            <input 
+              type="text" 
+              name="display-name" 
+              placeholder="Lucy"
+              onChange={this._onChangeDisplayName.bind(this)}
             />
-          <br/>Display Name<br/>
-          <input 
-            type="text" 
-            name="display-name" 
-            placeholder="Lucy"
-            onChange={this._onChangeDisplayName.bind(this)}
-          />
-          <br/><button onClick={this.submitLoginDetails.bind(this)}>Done!</button>
+          </fieldset>
+          <button onClick={this.submitLoginDetails.bind(this)}>NEXT</button>
         </form>        
       </div>      
     )
