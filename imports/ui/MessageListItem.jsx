@@ -7,10 +7,10 @@ export default class MessageListItem extends Component {
     return (
       <li className="message-list-item">
         <div className="message-row">
-          <div className="author-icon"></div>
+          {this.props.showName ? <div className="author-icon"></div> : ''}          
           <div className="message-text">{message.text}</div>
         </div>
-        <h5 className="message-author-name">{message.authorName}</h5>
+        {this.props.showName ? <h5 className="message-author-name">{message.authorName}</h5> : ''}        
       </li>
     );
   }

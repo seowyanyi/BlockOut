@@ -3,15 +3,6 @@ import ReactDOM from 'react-dom';
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
 
-function getMessageListItem(message) {
-  return (
-    <MessageListItem
-      key={message._id}
-      message={message}
-    />
-  );
-}
-
 export default class MessageSection extends Component {
 
   constructor(props, context) {
@@ -23,7 +14,27 @@ export default class MessageSection extends Component {
   }
 
   render() {
-    let messageListItems = this.props.messages.map(getMessageListItem);
+    let messageListItems = []
+    for (let i=0; i<this.props.messages.length-1; ++i) {
+      let message = this.props.messages[i]
+      let nextName = this.props.messages[i+1].authorName
+      messageListItems.push(
+        <MessageListItem
+          key={message._id}
+          message={message}
+          showName={message.authorName == nextName ? false : true}
+        />
+      )      
+    }
+    // last message
+    let message = this.props.messages[this.props.messages.length-1]
+    messageListItems.push(
+      <MessageListItem
+        key={message._id}
+        message={message}
+        showName={true}
+      />
+    )   
     return (
       <div className="message-section">
         <div className="message-thread-heading">
