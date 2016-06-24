@@ -161,6 +161,11 @@ html, body {
   display: -ms-flex;
   display: -o-flex;
   display: flex;
+  position: relative;
+}
+.author {
+  position: absolute;
+  bottom: 0px;
 }
 .author-icon {
   width: 50px;
@@ -170,31 +175,35 @@ html, body {
 }
 .message-author-name,
 .thread-name {
+  display: block;
   color: #fe7b2a;
   font-size: 13px;
   margin: 0;
+  text-align: left;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  font-weight: 600;
 }
-
 .message-time, .thread-time {
   color: #999999;
   font-size: 10px;
   padding-top: 2px;
-  padding-left: 8px;
+  padding-left: 5px;
 }
 .message-content {
+  margin-left: 60px;
   width: 80%;
 }
 .message-text {
-  background-color: #fe7b2a;
   width: 100%;
   border-radius: 5px;
-  padding: 8px;
   margin-left: 5px;
-}
-.message-text, .thread-last-message {
   clear: both;
   font-size: 14px;
-  padding-top: 10px;
+  padding: 0px 0px 0px 0px;
+}
+.last-message {
+  margin-bottom: 24px;
 }
 /*COMPOSER*/
 .composer {

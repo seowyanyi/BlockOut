@@ -21,24 +21,35 @@ export default class MessageSection extends Component {
 
   render() {
     let messageListItems = []
-    for (let i=0; i<this.props.messages.length-1; ++i) {
-      let message = this.props.messages[i]
-      let nextName = this.props.messages[i+1].authorName
-      messageListItems.push(
-        <MessageListItem
-          key={message._id}
-          message={message}
-          showName={message.authorName == nextName ? false : true}
-        />
-      )      
-    }
-    // last message
-    let message = this.props.messages[this.props.messages.length-1]
+ // first message
+    let message = this.props.messages[0]
     messageListItems.push(
       <MessageListItem
         key={message._id}
         message={message}
         showName={true}
+      />
+    )     
+    for (let i=1; i<this.props.messages.length-1; ++i) {
+      let message = this.props.messages[i]
+      let nextName = this.props.messages[i+1].authorName
+      let prevName = this.props.messages[i-1].authorName
+      messageListItems.push(
+        <MessageListItem
+          key={message._id}
+          message={message}
+          showIcon={message.authorName == nextName ? false : true}
+          showName={message.authorName != prevName ? true : false}
+        />
+      )      
+    }
+    // last message
+    message = this.props.messages[this.props.messages.length-1]
+    messageListItems.push(
+      <MessageListItem
+        key={message._id}
+        message={message}
+        showIcon={true}
       />
     )   
     return (
@@ -52,11 +63,7 @@ export default class MessageSection extends Component {
           {messageListItems}
         </ul>
         <div className="composer">
-<<<<<<< Updated upstream
           <MessageComposer threadID={500} displayName={this.props.displayName}/>
-=======
-          <MessageComposer threadID={this.state.thread.id}/>
->>>>>>> Stashed changes
           <i className="fa fa-paper-plane"></i>
         </div>
       </div>
