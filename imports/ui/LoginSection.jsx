@@ -23,7 +23,7 @@ export default class LoginSection extends Component {
 
   submitLoginDetails(e) {
     e.preventDefault()
-    browserHistory.push('/home')
+    browserHistory.push('/home/chatmap')
   }
 
   render() {
