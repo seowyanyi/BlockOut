@@ -175,10 +175,11 @@ h1, h2, h3 {
 /*LOGIN PAGE*/
 .login-section {
   background: #fe7b2a; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #fe7b2a 0%, #ffd139 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #fe7b2a 0%,#ffd139 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url(./bgoverlay.png), -moz-linear-gradient(-45deg, #fe7b2a 0%, #ffd139 100%); /* FF3.6-15 */
+  background: url(./bgoverlay.png), -webkit-linear-gradient(-45deg, #fe7b2a 0%,#ffd139 100%); /* Chrome10-25,Safari5.1-6 */
+  background: url(./bgoverlay.png), linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe7b2a', endColorstr='#ffd139',GradientType=1 );
+  background-size: cover;
   height: 100%;
   display: -webkit-flex;
   display: -moz-flex;
