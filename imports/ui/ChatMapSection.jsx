@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { Messages } from '../api/messages.js';
 import { browserHistory } from 'react-router'
+import * as Actions from '../../client/actions/actions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 function locationMap() {
     // Init Map
@@ -48,27 +51,36 @@ function locationMap() {
 
 export default class ChatMapSection extends Component {
   bindEventListeners() {
+    const actions = bindActionCreators(Actions, this.props.dispatch);
     $('.mapboxgl-canvas').click(function() {
       setTimeout(function() {
         if ($('[data-id="chat-310530"]')) {
           $('[data-id="chat-310530"]').click(function() {
-            localStorage.postalCode = '310530'
-            localStorage.subGroupName = 'Main'
+            actions.updateAppStatus({
+              subGroupName: 'Main',
+              postalCode: '310530'
+            })
             browserHistory.push('/chat')
           }.bind(this));    
           $('[data-id="chat-310154"]').click(function() {
-            localStorage.postalCode = '310154'
-            localStorage.subGroupName = 'Main'
+            actions.updateAppStatus({
+              subGroupName: 'Main',
+              postalCode: '310154'
+            })
             browserHistory.push('/chat')
           }.bind(this));
           $('[data-id="chat-310480"]').click(function() {
-            localStorage.postalCode = '310480'
-            localStorage.subGroupName = 'Main'
+            actions.updateAppStatus({
+              subGroupName: 'Main',
+              postalCode: '310480'
+            })
             browserHistory.push('/chat')          
           }.bind(this));
           $('[data-id="chat-310177"]').click(function() {
-            localStorage.postalCode = '310177'
-            localStorage.subGroupName = 'Main'
+            actions.updateAppStatus({
+              subGroupName: 'Main',
+              postalCode: '310177'
+            })
             browserHistory.push('/chat')
           }.bind(this));                  
         }        
@@ -91,3 +103,10 @@ export default class ChatMapSection extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    app: state.app
+  };
+}
+export default connect(mapStateToProps)(ChatMapSection)

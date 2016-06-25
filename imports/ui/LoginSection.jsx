@@ -3,21 +3,28 @@ import ReactDOM from 'react-dom';
 import Logo from './Logo.jsx';
 import { browserHistory } from 'react-router'
 import { randAvatarColor } from '../../client/helper.js'
+import * as Actions from '../../client/actions/actions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 export default class LoginSection extends Component {
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      postalCode: 0,
+      postalCode: '',
       displayName: ''
     }
-    localStorage.subGroupName = 'Main'
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      subGroupName: 'Main',
+      postalCode: ''
+    })
     localStorage.avatarBgColor = randAvatarColor();
   }
 
   _onChangePostalCode(event, value) {
-    this.setState({postalCode: parseInt(event.target.value)})
+    this.setState({postalCode: event.target.value})
   }
 
   _onChangeDisplayName(event, value) {
@@ -26,8 +33,12 @@ export default class LoginSection extends Component {
 
   submitLoginDetails(e) {
     e.preventDefault()
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      subGroupName: 'Main',
+      postalCode: this.state.postalCode
+    })    
     localStorage.displayName = this.state.displayName
-    localStorage.postalCode = this.state.postalCode
     browserHistory.push('/chat')
   }
 
@@ -61,3 +72,11 @@ export default class LoginSection extends Component {
   }
 
 }
+
+function mapStateToProps(state) {
+  return {
+    app: state.app
+  };
+}
+
+export default connect(mapStateToProps)(LoginSection)

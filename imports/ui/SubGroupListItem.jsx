@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 
 export default class SubGroupListItem extends Component {
   render() {
-    const klass = this.props.subGroupName === localStorage.subGroupName? 'currentChannel' : '';
+    const klass = this.props.subGroupName === this.props.currentSubGroupName? 'currentChannel' : '';
     return (
-      <li className={klass}><button>#{this.props.subGroupName}</button></li>
+      <li className={klass} onClick={this.props.onClick}><button>#{this.props.subGroupName}</button></li>
     );
   }
 }

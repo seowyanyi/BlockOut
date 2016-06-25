@@ -4,7 +4,6 @@ let constants = require('../../imports/constants.js');
 // Example state tree: 
 // {
 //   currentUser: 'Yan Yi',
-//   previousPage: '/chat' 
 // }
 
 export default function app(state={}, action) {

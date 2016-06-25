@@ -18,4 +18,10 @@ function makeActionCreator(type, ...argNames) {
  * named "type". So DO NOT name other parameters as "type".
  */
 
-export const updateAppStatus = makeActionCreator(constants.UPDATE_APP_STATUS, 'app');
+const _updateAppStatus = makeActionCreator(constants.UPDATE_APP_STATUS, 'app');
+
+export function updateAppStatus(obj) {
+    return function(dispatch) {
+      dispatch(_updateAppStatus(obj));
+    }
+}

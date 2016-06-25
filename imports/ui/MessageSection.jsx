@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
 import { browserHistory } from 'react-router'
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
@@ -8,6 +7,10 @@ import { Messages } from '../api/messages.js';
 import NewSubGroup from './NewSubGroup.jsx';
 import Avatar from './Avatar.jsx';
 import SubGroupListItem from './SubGroupListItem';
+import * as Actions from '../../client/actions/actions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import {composeWithTracker} from 'react-komposer';
 
 class MessageSection extends Component {
 
@@ -36,10 +39,17 @@ class MessageSection extends Component {
       this.bindEventListeners()
   }
 
+  goToSubgroup(subGroupName) {
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      subGroupName: subGroupName
+    })    
+  }
+
   render() {
     let messageListItems = []
     if (this.props.messages && this.props.messages.length > 0) {
-      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode && msg.subGroupName === localStorage.subGroupName)
+      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === this.props.app.postalCode && msg.subGroupName === this.props.app.subGroupName)
 
       if (filteredMessages.length > 0) {
         // first message
@@ -83,11 +93,11 @@ class MessageSection extends Component {
       }
     }
 
-    let filteredSubGroups = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode);
+    let filteredSubGroups = this.props.messages.filter(msg => msg.postalCode === this.props.app.postalCode);
     if (filteredSubGroups.length === 0) {
-      Meteor.call('messages.insert', `Welcome to Annoucements`, localStorage.postalCode, 'Annoucements', 'BlockOut');      
-      Meteor.call('messages.insert', `Welcome to Events`, localStorage.postalCode, 'Events', 'BlockOut');      
-      Meteor.call('messages.insert', `Welcome to Food`, localStorage.postalCode, 'Food', 'BlockOut');          
+      // Meteor.call('messages.insert', `Welcome to Annoucements`, this.props.app.postalCode, 'Annoucements', 'BlockOut');      
+      // Meteor.call('messages.insert', `Welcome to Events`, this.props.app.postalCode, 'Events', 'BlockOut');      
+      // Meteor.call('messages.insert', `Welcome to Food`, this.props.app.postalCode, 'Food', 'BlockOut');          
     }
 
     let subGroups = _.uniq(_.pluck(filteredSubGroups, 'subGroupName'));
@@ -95,7 +105,11 @@ class MessageSection extends Component {
     let subGroupListItems = [];
     for (let i=0; i<subGroups.length; i++) {
       subGroupListItems.push(
-        <SubGroupListItem key={subGroups[i]} subGroupName={subGroups[i]}/>
+        <SubGroupListItem 
+        onClick={this.goToSubgroup.bind(this, subGroups[i])} 
+        key={subGroups[i]} 
+        subGroupName={subGroups[i]} 
+        currentSubGroupName={this.props.app.subGroupName}/>
       );
     }
 
@@ -105,7 +119,7 @@ class MessageSection extends Component {
           <div onClick={this.goBack.bind(this)} className="backButton">
             <i className="fa fa-angle-left clickable"></i>
           </div>
-          <span>{`#${localStorage.postalCode}_ ${localStorage.subGroupName}`}</span>
+          <span>{`#${this.props.app.postalCode}_ ${this.props.app.subGroupName}`}</span>
           <i className="fa fa-bars clickable"></i>
         </div>
         <ul className="message-list" ref="messageList">
@@ -113,9 +127,9 @@ class MessageSection extends Component {
         </ul>
         <div className="composer">
           <MessageComposer 
-            postalCode={localStorage.postalCode} 
+            postalCode={this.props.app.postalCode} 
             displayName={localStorage.displayName}
-            subGroupName={localStorage.subGroupName}
+            subGroupName={this.props.app.subGroupName}
             />
           <i className="fa fa-paper-plane clickable"></i>
         </div>
@@ -129,7 +143,7 @@ class MessageSection extends Component {
             <Avatar displayName={localStorage.displayName} />
             <div>
               <h2>{localStorage.displayName}</h2>
-              <p>{`#${localStorage.postalCode}`}</p>
+              <p>{`#${this.props.app.postalCode}`}</p>
             </div>
           </div>
           <div className="hr"></div>
@@ -162,10 +176,18 @@ class MessageSection extends Component {
     ul.scrollTop = ul.scrollHeight;
   }
 }
-
-export default createContainer(() => {
-  Meteor.subscribe('messages');
-  return {
-    messages: Messages.find({}, {sort:{createdAt:-1}}).fetch()
+function composer(props, onData) {
+  if (Meteor.subscribe('messages').ready()) {
+    const messages = Messages.find({}, {sort:{createdAt:-1}}).fetch()
+    onData(null, {messages});
   };
-}, MessageSection);
+};
+
+const MeteorMessagesComp = composeWithTracker(composer)(MessageSection);
+
+function mapStateToProps(state) {
+  return {
+    app: state.app
+  };
+}
+export default connect(mapStateToProps)(MeteorMessagesComp)
