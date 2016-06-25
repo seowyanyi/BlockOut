@@ -24,9 +24,24 @@ export default class AppHome extends Component {
   render() {
     return (
       <div className="apphome">
-        <div id='map'></div>
-        <h2>Home</h2>
-        <button onClick={this.props.goToChat.bind(this)}>Msg</button>
+        <div>
+          <div className="topbar">
+            <i className="fa fa-angle-left"></i>
+            <h2>Home</h2>
+            <i className="fa fa-search"></i>
+          </div>
+          <div className="chatEventsToggle">
+            <button className="currentPage">CHAT</button>
+            <button>EVENTS</button>
+          </div>
+        </div>
+        <div id='map'></div>  
+        <div className="bottombar">
+          <button className="currentPage"><i className="fa fa-home"></i></button>
+          <button onClick={this.props.goToChat.bind(this)}><i className="fa fa-comment-o"></i></button>
+          <button><i className="fa fa-calendar"></i></button>
+          <button><i className="fa fa-bars"></i></button>
+        </div>  
       </div>
       )
   }
