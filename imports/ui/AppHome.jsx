@@ -9,7 +9,7 @@ export default class AppHome extends Component {
   goToChat() {
     browserHistory.push('/chat')
   }
-
+  
   goToChatMap() {
     browserHistory.push('/home/chatmap')
   }

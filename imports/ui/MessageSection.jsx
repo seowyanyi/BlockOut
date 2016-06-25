@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import { browserHistory } from 'react-router'
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
 import { Messages } from '../api/messages.js'; 
@@ -20,6 +20,10 @@ class MessageSection extends Component {
 
   componentDidMount() {
     this._scrollToBottom();
+  }
+
+  goBack() {
+    browserHistory.push('/home/chatmap')
   }
 
   render() {
@@ -60,8 +64,10 @@ class MessageSection extends Component {
 
     return (
       <div className="message-section">
-        <div className="message-thread-heading">
-          <i className="fa fa-angle-left"></i>
+        <div className="message-thread-heading">          
+          <div onClick={this.goBack.bind(this)} className="backButton">
+            <i className="fa fa-angle-left"></i>
+          </div>
           <span>{this.state.thread.name}</span>
           <i className="fa fa-bars"></i>
         </div>

@@ -5,6 +5,9 @@
   font-family: inherit;
   box-sizing: border-box;
 }
+button:hover {
+  cursor: pointer;
+}
 /*FONTS*/
 @font-face {
   font-family: 'source_sans_proextralight';
@@ -68,6 +71,11 @@ h1, h2, h3 {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  height: 100%;
+}
+.apphome .container {
+  position: relative;
+  width: 100%;
   height: 100%;
 }
 /*TOPBAR HEADER*/
@@ -214,11 +222,52 @@ h1, h2, h3 {
 /*MAP SECTION*/
 #map { 
   position: absolute; 
-  top: 90px; 
-  bottom: 50px; 
+  top: 0;
+  bottom: 0;
   width: 100%; 
 }
+.mapboxgl-popup .mapboxgl-popup-content {
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.map-popup {
+  text-align: center;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  min-width: 200px;
+}
+.map-popup h2 {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  background-color: #ff7836; 
+  color: #ffffff;
+  padding: 5px;
+}
 .mapboxgl-ctrl-bottom-right {
+  display: none;
+}
+.chat-participants img {
+  width: 30px;
+  border-radius: 50%;
+}
+.map-popup button {
+  background-color: #ff7836; 
+  color: #ffffff;
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 10px;
+  border: 0;
+  outline: 0;
+}
+.mapboxgl-popup-close-button {
   display: none;
 }
 /*CHAT SECTION*/
