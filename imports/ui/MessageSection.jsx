@@ -4,7 +4,8 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { browserHistory } from 'react-router'
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
-import { Messages } from '../api/messages.js'; 
+import { Messages } from '../api/messages.js';
+import NewSubGroup from './NewSubGroup.jsx'
 
 class MessageSection extends Component {
 
@@ -24,7 +25,7 @@ class MessageSection extends Component {
     let messageListItems = []
 
     if (this.props.messages && this.props.messages.length > 0) {
-      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode)      
+      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode)
       // first message
       let message = filteredMessages[0]
       let nextName = filteredMessages.length > 1 ? filteredMessages[1].authorName : null
@@ -32,10 +33,10 @@ class MessageSection extends Component {
         <MessageListItem
           key={message._id}
           message={message}
-          showIcon={message.authorName == nextName ? false : true}          
+          showIcon={message.authorName == nextName ? false : true}
           showName={true}
         />
-      )     
+      )
       for (let i=1; i<filteredMessages.length-1; ++i) {
         let message = filteredMessages[i]
         let nextName = filteredMessages[i+1].authorName
@@ -47,7 +48,7 @@ class MessageSection extends Component {
             showIcon={message.authorName == nextName ? false : true}
             showName={message.authorName != prevName ? true : false}
           />
-        )      
+        )
       }
 
       // last message
@@ -61,17 +62,17 @@ class MessageSection extends Component {
             showIcon={true}
             showName={message.authorName != prevName ? true : false}
           />
-        )    
-      }     
+        )
+      }
     }
 
     return (
       <div className="message-section">
-        <div className="message-thread-heading">          
+        <div className="message-thread-heading">
           <div onClick={this.goBack.bind(this)} className="backButton">
             <i className="fa fa-angle-left"></i>
           </div>
-          <span>{localStorage.postalCode}</span>
+          <span>{`localStorage.postalCode: ${localStorage.subGroupName}`}</span>
           <i className="fa fa-bars"></i>
         </div>
         <ul className="message-list" ref="messageList">
@@ -81,6 +82,7 @@ class MessageSection extends Component {
           <MessageComposer postalCode={localStorage.postalCode} displayName={localStorage.displayName}/>
           <i className="fa fa-paper-plane"></i>
         </div>
+        <NewSubGroup />
       </div>
     );
   }
