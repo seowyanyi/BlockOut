@@ -208,16 +208,16 @@ h1, h2, h3 {
  font-size: 16px;
 }
 .login-section :-moz-placeholder { /* Firefox 18- */
- color: #ffffff; 
- font-size: 16px; 
+ color: #ffffff;
+ font-size: 16px;
 }
 .login-section ::-moz-placeholder {  /* Firefox 19+ */
- color: #ffffff; 
- font-size: 16px; 
+ color: #ffffff;
+ font-size: 16px;
 }
-.login-section :-ms-input-placeholder {  
- color: #ffffff; 
- font-size: 16px; 
+.login-section :-ms-input-placeholder {
+ color: #ffffff;
+ font-size: 16px;
 }
 .login-section fieldset {
   border: 0;
@@ -234,11 +234,11 @@ h1, h2, h3 {
   outline: 0;
 }
 /*MAP SECTION*/
-#map, #eventMap { 
-  position: absolute; 
+#map, #eventMap {
+  position: absolute;
   top: 0;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
 }
 .mapboxgl-popup .mapboxgl-popup-content {
   border-radius: 10px;
@@ -256,7 +256,7 @@ h1, h2, h3 {
   top:0;
   left: 0;
   right: 0;
-  background-color: #ff7836; 
+  background-color: #ff7836;
   color: #ffffff;
   padding: 5px;
 }
@@ -268,7 +268,7 @@ h1, h2, h3 {
   border-radius: 50%;
 }
 .map-popup button {
-  background-color: #ff7836; 
+  background-color: #ff7836;
   color: #ffffff;
   position: absolute;
   display: block;
@@ -346,7 +346,19 @@ h1, h2, h3 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #fe7b2a;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  line-height: 50px;
+}
+.author-icon.blockout {
+  background-color: #ffa93a;
+  line-height: 65px;
+}
+.author-icon.blockout > svg{
+  width: 30px;
+  height: 40px;
 }
 .message-author-name,
 .thread-name {
