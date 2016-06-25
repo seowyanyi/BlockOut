@@ -20,11 +20,17 @@ export default class MessageComposer extends Component {
   }
 
   _onKeyDown(event) {
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+
     if (event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault();
       var text = this.props.app.composerText.trim();
       if (text) {
-        Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, this.props.displayName);
+        if (text === '#events') {
+          Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, 'LIST_OF_EVENTS');          
+        } else {
+          Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, this.props.displayName);          
+        }
       }
       const actions = bindActionCreators(Actions, this.props.dispatch);
       actions.updateAppStatus({

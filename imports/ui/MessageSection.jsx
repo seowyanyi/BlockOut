@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import {composeWithTracker} from 'react-komposer';
 import { randAvatarColor } from '../../client/helper.js'
 import { Meteor } from 'meteor/meteor';
+import EventCard from './EventCard.jsx';
 
 class MessageSection extends Component {
 
@@ -82,43 +83,66 @@ class MessageSection extends Component {
         let message = filteredMessages[0]
         let nextName = filteredMessages.length > 1 ? filteredMessages[1].authorName : null
 
-        messageListItems.push(
-          <MessageListItem
-            key={message._id}
-            message={message}
-            showIcon={message.authorName == nextName ? false : true}
-            showName={true}
-            color={userColors[message.authorName]}
-          />
-        )
-        for (let i=1; i<filteredMessages.length-1; ++i) {
-          let message = filteredMessages[i]
-          let nextName = filteredMessages[i+1].authorName
-          let prevName = filteredMessages[i-1].authorName
+        if (message.authorName === 'LIST_OF_EVENTS') {
+          messageListItems.push(
+            <EventCard key={_.uniqueId()}/>
+          )
+        } else {
           messageListItems.push(
             <MessageListItem
               key={message._id}
               message={message}
               showIcon={message.authorName == nextName ? false : true}
-              showName={message.authorName != prevName ? true : false}
+              showName={true}
               color={userColors[message.authorName]}
             />
-          )
+          )          
+        }
+
+        // middle messages
+        for (let i=1; i<filteredMessages.length-1; ++i) {
+          let message = filteredMessages[i]
+          let nextName = filteredMessages[i+1].authorName
+          let prevName = filteredMessages[i-1].authorName
+
+          if (message.authorName === 'LIST_OF_EVENTS') {
+            messageListItems.push(
+              <EventCard key={_.uniqueId()}/>
+            )
+          } else {
+            messageListItems.push(
+              <MessageListItem
+                key={message._id}
+                message={message}
+                showIcon={message.authorName == nextName ? false : true}
+                showName={message.authorName != prevName ? true : false}
+                color={userColors[message.authorName]}
+              />
+            )          
+          }          
         }
 
         // last message
         if (filteredMessages.length > 1) {
           message = filteredMessages[filteredMessages.length-1]
-          prevName = filteredMessages.length > 1 ? filteredMessages[filteredMessages.length-2].authorName : null
-          messageListItems.push(
-            <MessageListItem
-              key={message._id}
-              message={message}
-              showIcon={true}
-              showName={message.authorName != prevName ? true : false}
-              color={userColors[message.authorName]}
-            />
-          )
+          prevName = filteredMessages.length > 1 ? filteredMessages[filteredMessages.length-2].authorName : null          
+
+          if (message.authorName === 'LIST_OF_EVENTS') {
+            messageListItems.push(
+              <EventCard key={_.uniqueId()}/>
+            )
+          } else {
+            messageListItems.push(
+              <MessageListItem
+                key={message._id}
+                message={message}
+                showIcon={true}
+                showName={message.authorName != prevName ? true : false}
+                color={userColors[message.authorName]}
+              />
+            )            
+          }
+   
         }
       }
     }
