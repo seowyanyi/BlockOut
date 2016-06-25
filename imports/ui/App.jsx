@@ -8,7 +8,8 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    browserHistory.push('/login')
+    if (window.location.pathname === '/')
+      browserHistory.push('/login')
   }
 
   render() {

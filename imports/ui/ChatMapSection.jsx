@@ -39,9 +39,33 @@ function locationMap() {
 
 
 export default class ChatMapSection extends Component {
+  bindEventListeners() {
+    $('.mapboxgl-canvas').click(function() {
+      setTimeout(function() {
+        if ($('[data-id="chat-310530"]')) {
+          $('[data-id="chat-310530"]').click(function() {
+            console.log('chat-310530')
+          });    
+          $('[data-id="chat-310154"]').click(function() {
+            console.log('chat-310154')
+          });
+          $('[data-id="chat-310480"]').click(function() {
+            console.log('chat-310480')
+          });
+          $('[data-id="chat-310177"]').click(function() {
+            console.log('chat-310177')
+          });                  
+        }        
+      }, 100)
+
+    })        
+  }
+
   componentDidMount() {
     locationMap()      
+    this.bindEventListeners()
   }
+
 
   render() {
     return (

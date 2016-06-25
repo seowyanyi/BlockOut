@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import { browserHistory } from 'react-router'
 
 function eventMap() {
     // Init Map
@@ -37,9 +38,32 @@ function eventMap() {
   });
 }
 
-export default class AppHome extends Component {
+export default class EventSection extends Component {
+  bindEventListeners() {
+    $('.mapboxgl-canvas').click(function() {
+      setTimeout(function() {
+        if ($('[data-id="event-319383"]')) {
+          $('[data-id="event-319383"]').click(function() {
+            browserHistory.push('/eventlist')
+          });    
+          $('[data-id="event-310480"]').click(function() {
+            browserHistory.push('/eventlist')
+          });
+          $('[data-id="event-310530"]').click(function() {
+            browserHistory.push('/eventlist')
+          });
+          $('[data-id="event-310155"]').click(function() {
+            browserHistory.push('/eventlist')
+          });                  
+        }        
+      }, 100)
+
+    })        
+  }
+
 	componentDidMount() {
-		eventMap()      
+		eventMap()   
+    this.bindEventListeners()
 	}
 
 	render() {

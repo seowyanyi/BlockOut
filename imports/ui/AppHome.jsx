@@ -18,6 +18,14 @@ export default class AppHome extends Component {
     browserHistory.push('/home/events')
   }
 
+  goToSettings() {
+    browserHistory.push('/settings')
+  }  
+
+  goToCalendar() {
+    browserHistory.push('/calendar')
+  }
+
   render() {
     let currentTab = getCurrentTab()
     let chatMapBtnClass = ''
@@ -48,8 +56,8 @@ export default class AppHome extends Component {
         <div className="bottombar">
           <button className="currentPage"><i className="fa fa-home"></i></button>
           <button onClick={this.goToChat.bind(this)}><i className="fa fa-comment-o"></i></button>
-          <button><i className="fa fa-calendar"></i></button>
-          <button><i className="fa fa-bars"></i></button>
+          <button><i onClick={this.goToCalendar.bind(this)} className="fa fa-calendar"></i></button>
+          <button><i onClick={this.goToSettings.bind(this)} className="fa fa-bars"></i></button>
         </div>
       </div>
       )
