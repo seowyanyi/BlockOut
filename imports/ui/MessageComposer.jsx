@@ -32,6 +32,7 @@ export default class MessageComposer extends Component {
       <textarea
         className="message-composer"
         name="message"
+        placeholder="Post a message"
         value={this.state.text}
         onChange={this._onChange.bind(this)}
         onKeyDown={this._onKeyDown.bind(this)}
