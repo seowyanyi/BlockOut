@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import { Messages } from '../api/messages.js';
+import { browserHistory } from 'react-router'
 
 function locationMap() {
     // Init Map
@@ -44,21 +46,29 @@ export default class ChatMapSection extends Component {
       setTimeout(function() {
         if ($('[data-id="chat-310530"]')) {
           $('[data-id="chat-310530"]').click(function() {
-            console.log('chat-310530')
-          });    
+            localStorage.postalCode = '310530'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));    
           $('[data-id="chat-310154"]').click(function() {
-            console.log('chat-310154')
-          });
+            localStorage.postalCode = '310154'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));
           $('[data-id="chat-310480"]').click(function() {
-            console.log('chat-310480')
-          });
+            localStorage.postalCode = '310480'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')          
+          }.bind(this));
           $('[data-id="chat-310177"]').click(function() {
-            console.log('chat-310177')
-          });                  
+            localStorage.postalCode = '310177'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));                  
         }        
-      }, 100)
+      }.bind(this), 100)
 
-    })        
+    }.bind(this))        
   }
 
   componentDidMount() {
