@@ -21,7 +21,7 @@ export default class MessageComposer extends Component {
       event.preventDefault();
       var text = this.state.text.trim();
       if (text) {
-          Meteor.call('messages.insert', text, this.props.threadID, 'Main', this.props.displayName);
+          Meteor.call('messages.insert', text, this.props.postalCode, 'Main', this.props.displayName);
       }
       this.setState({text: ''});
     }

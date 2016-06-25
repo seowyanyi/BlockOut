@@ -11,12 +11,12 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
-  'messages.insert'(text, threadId, subGroupName, authorName) {
+  'messages.insert'(text, postalCode, subGroupName, authorName) {
     check(text, String);
 
     Messages.insert({
       text: text,
-      postalCode: threadId,
+      postalCode: postalCode,
       subGroupName: subGroupName,
       authorName: authorName,
       timestamp: Date.now(),

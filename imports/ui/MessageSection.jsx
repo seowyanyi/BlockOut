@@ -23,11 +23,11 @@ class MessageSection extends Component {
   render() {
     let messageListItems = []
 
-
     if (this.props.messages && this.props.messages.length > 0) {
+      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode)      
       // first message
-      let message = this.props.messages[0]
-      let nextName = this.props.messages.length > 1 ? this.props.messages[1].authorName : null
+      let message = filteredMessages[0]
+      let nextName = filteredMessages.length > 1 ? filteredMessages[1].authorName : null
       messageListItems.push(
         <MessageListItem
           key={message._id}
@@ -36,10 +36,10 @@ class MessageSection extends Component {
           showName={true}
         />
       )     
-      for (let i=1; i<this.props.messages.length-1; ++i) {
-        let message = this.props.messages[i]
-        let nextName = this.props.messages[i+1].authorName
-        let prevName = this.props.messages[i-1].authorName
+      for (let i=1; i<filteredMessages.length-1; ++i) {
+        let message = filteredMessages[i]
+        let nextName = filteredMessages[i+1].authorName
+        let prevName = filteredMessages[i-1].authorName
         messageListItems.push(
           <MessageListItem
             key={message._id}
@@ -49,17 +49,20 @@ class MessageSection extends Component {
           />
         )      
       }
+
       // last message
-      message = this.props.messages[this.props.messages.length-1]
-      prevName = this.props.messages.length > 1 ? this.props.messages[this.props.messages.length-2].authorName : null
-      messageListItems.push(
-        <MessageListItem
-          key={message._id}
-          message={message}
-          showIcon={true}
-          showName={message.authorName != prevName ? true : false}
-        />
-      )         
+      if (filteredMessages.length > 1) {
+        message = filteredMessages[filteredMessages.length-1]
+        prevName = filteredMessages.length > 1 ? filteredMessages[filteredMessages.length-2].authorName : null
+        messageListItems.push(
+          <MessageListItem
+            key={message._id}
+            message={message}
+            showIcon={true}
+            showName={message.authorName != prevName ? true : false}
+          />
+        )    
+      }     
     }
 
     return (
@@ -75,7 +78,7 @@ class MessageSection extends Component {
           {messageListItems}
         </ul>
         <div className="composer">
-          <MessageComposer threadID={500} displayName={localStorage.displayName}/>
+          <MessageComposer postalCode={localStorage.postalCode} displayName={localStorage.displayName}/>
           <i className="fa fa-paper-plane"></i>
         </div>
       </div>
