@@ -81,16 +81,15 @@ class MessageSection extends Component {
           )
         }
       }
-
     }
 
     let filteredSubGroups = this.props.messages.filter(msg => msg.authorName === localStorage.displayName);
     let subGroups = _.uniq(_.pluck(filteredSubGroups, 'subGroupName'));
-    console.table(subGroups);
+
     let subGroupListItems = [];
     for (let i=0; i<subGroups.length; i++) {
       subGroupListItems.push(
-        <SubGroupListItem subGroupName={subGroups[i]}/>
+        <SubGroupListItem key={subGroups[i]} subGroupName={subGroups[i]}/>
       );
     }
 
@@ -107,7 +106,11 @@ class MessageSection extends Component {
           {messageListItems}
         </ul>
         <div className="composer">
-          <MessageComposer postalCode={localStorage.postalCode} displayName={localStorage.displayName}/>
+          <MessageComposer 
+            postalCode={localStorage.postalCode} 
+            displayName={localStorage.displayName}
+            subGroupName={localStorage.subGroupName}
+            />
           <i className="fa fa-paper-plane clickable"></i>
         </div>
 
