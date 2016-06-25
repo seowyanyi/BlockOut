@@ -29,6 +29,7 @@ export default class NewSubGroup extends Component {
         actions.updateAppStatus({
           subGroupName: subGroupName,
         })
+        $(".offcanvasSidebar").addClass("off");
       }
       this.setState({subGroupName: ''});
     }

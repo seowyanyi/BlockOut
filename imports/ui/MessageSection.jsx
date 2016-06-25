@@ -44,6 +44,7 @@ class MessageSection extends Component {
     actions.updateAppStatus({
       subGroupName: subGroupName
     })    
+    $(".offcanvasSidebar").addClass("off");    
   }
 
   render() {
