@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './Logo.jsx';
 import { browserHistory } from 'react-router'
+import { randAvatarColor } from '../../client/helper.js'
 
 export default class LoginSection extends Component {
 
@@ -12,6 +13,7 @@ export default class LoginSection extends Component {
       displayName: ''
     }
     localStorage.subGroupName = 'Main'
+    localStorage.avatarBgColor = randAvatarColor();
   }
 
   _onChangePostalCode(event, value) {
@@ -22,7 +24,7 @@ export default class LoginSection extends Component {
   _onChangeDisplayName(event, value) {
     this.setState({displayName: event.target.value})
     localStorage.displayName = event.target.value
-  }  
+  }
 
   submitLoginDetails(e) {
     e.preventDefault()
@@ -37,24 +39,24 @@ export default class LoginSection extends Component {
       <h3>Hi there!</h3>
         <form>
           <fieldset>
-            <input 
-              type="text" 
-              name="display-name" 
+            <input
+              type="text"
+              name="display-name"
               placeholder="enter your name"
               onChange={this._onChangeDisplayName.bind(this)}
             />
           </fieldset>
           <fieldset>
-            <input 
-              type="text" 
-              name="postal-code" 
+            <input
+              type="text"
+              name="postal-code"
               placeholder="enter your postal code"
               onChange={this._onChangePostalCode.bind(this)}
               />
           </fieldset>
           <button onClick={this.submitLoginDetails.bind(this)}>Let's get started!</button>
-        </form>        
-      </div>      
+        </form>
+      </div>
     )
   }
 
