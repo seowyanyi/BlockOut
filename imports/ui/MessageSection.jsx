@@ -111,6 +111,9 @@ class MessageSection extends Component {
           <i className="fa fa-paper-plane clickable"></i>
         </div>
 
+        <div className="hider">
+        </div>
+
         <div className="offcanvasSidebar off">
           <i className="fa fa-times closeSidebar clickable"></i>
           <div className="user">
