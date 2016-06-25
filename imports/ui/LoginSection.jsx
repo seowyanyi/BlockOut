@@ -15,10 +15,12 @@ export default class LoginSection extends Component {
 
   _onChangePostalCode(event, value) {
     this.setState({postalCode: parseInt(event.target.value)})
+    localStorage.postalCode = event.target.value
   }
 
   _onChangeDisplayName(event, value) {
     this.setState({displayName: event.target.value})
+    localStorage.displayName = event.target.value
   }  
 
   submitLoginDetails(e) {

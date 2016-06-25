@@ -10,12 +10,6 @@ class MessageSection extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      thread: {
-        name: '#310530',
-        id: 123
-      }
-    }
   }
 
   componentDidMount() {
@@ -28,13 +22,17 @@ class MessageSection extends Component {
 
   render() {
     let messageListItems = []
+
+
     if (this.props.messages && this.props.messages.length > 0) {
       // first message
       let message = this.props.messages[0]
+      let nextName = this.props.messages.length > 1 ? this.props.messages[1].authorName : null
       messageListItems.push(
         <MessageListItem
           key={message._id}
           message={message}
+          showIcon={message.authorName == nextName ? false : true}          
           showName={true}
         />
       )     
@@ -53,11 +51,13 @@ class MessageSection extends Component {
       }
       // last message
       message = this.props.messages[this.props.messages.length-1]
+      prevName = this.props.messages.length > 1 ? this.props.messages[this.props.messages.length-2].authorName : null
       messageListItems.push(
         <MessageListItem
           key={message._id}
           message={message}
           showIcon={true}
+          showName={message.authorName != prevName ? true : false}
         />
       )         
     }
@@ -68,14 +68,14 @@ class MessageSection extends Component {
           <div onClick={this.goBack.bind(this)} className="backButton">
             <i className="fa fa-angle-left"></i>
           </div>
-          <span>{this.state.thread.name}</span>
+          <span>{localStorage.postalCode}</span>
           <i className="fa fa-bars"></i>
         </div>
         <ul className="message-list" ref="messageList">
           {messageListItems}
         </ul>
         <div className="composer">
-          <MessageComposer threadID={500} displayName={this.props.displayName}/>
+          <MessageComposer threadID={500} displayName={localStorage.displayName}/>
           <i className="fa fa-paper-plane"></i>
         </div>
       </div>
