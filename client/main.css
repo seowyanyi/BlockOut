@@ -41,6 +41,11 @@ html, body {
 }
 /*LOGIN PAGE*/
 .login-section {
+  background: #fe7b2a; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #fe7b2a 0%, #ffd139 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #fe7b2a 0%,#ffd139 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe7b2a', endColorstr='#ffd139',GradientType=1 );
   height: 100%;
   display: -webkit-flex;
   display: -moz-flex;
@@ -52,42 +57,67 @@ html, body {
   flex-direction: column;
   padding-top: 48px;
 }
+.login-section svg {
+  width: 200px;
+  margin: 0 auto;
+}
 .login-section form {
   width: 80%;
   margin: 0 auto;
   text-align: center;
 }
 .login-section h3 {
-  font-weight: 300;
-  text-transform: uppercase;
+  padding-top: 36px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
 }
 .login-section input {
+  background-color: transparent;
   text-align: center;
   font-size: 36px;
   width: 80%;
   margin-top: 24px;
+  color: #ffffff;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ffffff;
   outline: none;
+}
+.login-section ::-webkit-input-placeholder {
+   color: #ffffff;
+   font-size: 16px;
+}
+.login-section :-moz-placeholder { /* Firefox 18- */
+   color: #ffffff; 
+   font-size: 16px; 
+}
+.login-section ::-moz-placeholder {  /* Firefox 19+ */
+   color: #ffffff; 
+   font-size: 16px; 
+}
+.login-section :-ms-input-placeholder {  
+   color: #ffffff; 
+   font-size: 16px; 
 }
 .login-section fieldset {
   border: 0;
   outline: 0;
-  padding: 48px 0px;
 }
 .login-section button {
-  margin-top: 24px;
-  padding: 12px 36px;
-  background-color: #fe7b2a;
+  margin-top: 48px;
+  padding: 8px 36px;
+  background-color: transparent;
   color: #ffffff;
-  font-size: 36px;
-  border: 0;
+  font-size: 24px;
+  font-weight: 100;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
   outline: 0;
 }
 /*MAP SECTION*/
 #map { 
   position: absolute; 
-  top: 40px; 
+  top: 50px; 
   bottom: 50px; 
   width: 100%; 
 }
@@ -139,7 +169,7 @@ html, body {
 
 .message-thread-heading,
 .thread-count {
-  height: 40px;
+  height: 50px;
   margin: 0;
 }
 /*MESSAGE SECTION*/

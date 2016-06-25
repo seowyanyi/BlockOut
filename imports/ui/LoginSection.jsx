@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Logo from './Logo.jsx';
 
 export default class LoginSection extends Component {
 
@@ -27,26 +28,26 @@ export default class LoginSection extends Component {
   render() {
     return (
       <div className="login-section">
+      <Logo />
+      <h3>Hi there!</h3>
         <form>
           <fieldset>
-            <h3>Postal Code</h3>
-            <input 
-              type="text" 
-              name="postal-code" 
-              placeholder="247964"
-              onChange={this._onChangePostalCode.bind(this)}
-              />
-          </fieldset>
-          <fieldset>
-            <h3>Display Name</h3>
             <input 
               type="text" 
               name="display-name" 
-              placeholder="Lucy"
+              placeholder="enter your name"
               onChange={this._onChangeDisplayName.bind(this)}
             />
           </fieldset>
-          <button onClick={this.submitLoginDetails.bind(this)}>NEXT</button>
+          <fieldset>
+            <input 
+              type="text" 
+              name="postal-code" 
+              placeholder="enter your postal code"
+              onChange={this._onChangePostalCode.bind(this)}
+              />
+          </fieldset>
+          <button onClick={this.submitLoginDetails.bind(this)}>Let's get started!</button>
         </form>        
       </div>      
     )
