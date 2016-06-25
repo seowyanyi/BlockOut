@@ -485,8 +485,8 @@ div.author-icon {
 }
 .closeSidebar {
   position: absolute;
-  right: 64px;
-  top: 24px;
+  right: 56px;
+  top: 12px;
   color: #ffffff;
   font-size: 24px;
 }
