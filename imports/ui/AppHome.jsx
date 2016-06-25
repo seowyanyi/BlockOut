@@ -13,32 +13,32 @@ function locationMap() {
         doubleClickZoom: false,
         scrollZoom: false
     });
-    var markers = {
-      // "type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310530</h2><h3>HDB Learning Hub</h3><div class=\"chat-participants\"><p>84 Participants</p><p><img class=\"profiles\" src=\"/user1.jpg\"><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84745121002197,1.3323369762465722]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310480</h2><h3>HDB Hub</h3><div class=\"chat-participants\"><p>67 Participants</p><p><img class=\"profiles\" src=\"/user2.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"><img class=\"profiles\" src=\"/user6.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84851336479187,1.3320902797183731]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310154</h2><h3>Block 154 Lorong 2 Toa Payoh</h3><div class=\"chat-participants\"><p>75 Participants</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84620666503906,1.333232591695686]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310177</h2><h3>177 Toa Payoh Central</h3><div class=\"chat-participants\"><p>95 Participants</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.8478910923004,1.3336669918860002]}}]
-      "type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310530</h2><h3>HDB Learning Hub</h3><div class=\"chat-participants\"><p>84 Neighbours</p><p><img class=\"profiles\" src=\"/user1.jpg\"><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"></p></div><button data-id=\"chat-310530\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84745121002197,1.3323369762465722]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310480</h2><h3>HDB Hub</h3><div class=\"chat-participants\"><p>67 Neighbours</p><p><img class=\"profiles\" src=\"/user2.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"><img class=\"profiles\" src=\"/user6.jpg\"></p></div><button data-id=\"chat-310480\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84851336479187,1.3320902797183731]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310154</h2><h3>Block 154 Lorong 2 Toa Payoh</h3><div class=\"chat-participants\"><p>75 Neighbours</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div><button data-id=\"chat-310154\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84620666503906,1.333232591695686]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310177</h2><h3>177 Toa Payoh Central</h3><div class=\"chat-participants\"><p>95 Neighbours</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div><button data-id=\"chat-310177\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.8478910923004,1.3336669918860002]}}]
-    };
-    // Load Markers
-    mapObject.on('load', function () {
-        // Add marker data as a new GeoJSON source.
-        mapObject.addSource("markers", {
-            "type": "geojson",
-            "data": markers
-        });
+    // var markers = {
+    //   // "type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310530</h2><h3>HDB Learning Hub</h3><div class=\"chat-participants\"><p>84 Participants</p><p><img class=\"profiles\" src=\"/user1.jpg\"><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84745121002197,1.3323369762465722]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310480</h2><h3>HDB Hub</h3><div class=\"chat-participants\"><p>67 Participants</p><p><img class=\"profiles\" src=\"/user2.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"><img class=\"profiles\" src=\"/user6.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84851336479187,1.3320902797183731]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310154</h2><h3>Block 154 Lorong 2 Toa Payoh</h3><div class=\"chat-participants\"><p>75 Participants</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.84620666503906,1.333232591695686]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310177</h2><h3>177 Toa Payoh Central</h3><div class=\"chat-participants\"><p>95 Participants</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div></div>"},"geometry":{"type":"Point","coordinates":[103.8478910923004,1.3336669918860002]}}]
+    //   "type":"FeatureCollection","features":[{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310530</h2><h3>HDB Learning Hub</h3><div class=\"chat-participants\"><p>84 Neighbours</p><p><img class=\"profiles\" src=\"/user1.jpg\"><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"></p></div><button data-id=\"chat-310530\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84745121002197,1.3323369762465722]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310480</h2><h3>HDB Hub</h3><div class=\"chat-participants\"><p>67 Neighbours</p><p><img class=\"profiles\" src=\"/user2.jpg\"><img class=\"profiles\" src=\"/user5.jpg\"><img class=\"profiles\" src=\"/user6.jpg\"></p></div><button data-id=\"chat-310480\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84851336479187,1.3320902797183731]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310154</h2><h3>Block 154 Lorong 2 Toa Payoh</h3><div class=\"chat-participants\"><p>75 Neighbours</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div><button data-id=\"chat-310154\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.84620666503906,1.333232591695686]}},{"type":"Feature","properties":{"description":"<div class=\"map-popup\"><h2>#310177</h2><h3>177 Toa Payoh Central</h3><div class=\"chat-participants\"><p>95 Neighbours</p><p><img class=\"profiles\" src=\"/user3.jpg\"><img class=\"profiles\" src=\"/user7.jpg\"><img class=\"profiles\" src=\"/user4.jpg\"></p></div><button data-id=\"chat-310177\">Join Chat</button></div>","marker-symbol":"marker"},"geometry":{"type":"Point","coordinates":[103.8478910923004,1.3336669918860002]}}]
+    // };
+    // // Load Markers
+    // mapObject.on('load', function () {
+    //     // Add marker data as a new GeoJSON source.
+    //     mapObject.addSource("markers", {
+    //         "type": "geojson",
+    //         "data": markers
+    //     });
 
-        // Add a layer showing the markers.
-        mapObject.addLayer({
-            "id": "markers",
-            "type": "symbol",
-            "source": "markers",
-            "layout": {
-                "icon-image": "{marker-symbol}-15",
-                "icon-allow-overlap": true
-            }
-        });
-    });
+    //     // Add a layer showing the markers.
+    //     mapObject.addLayer({
+    //         "id": "markers",
+    //         "type": "symbol",
+    //         "source": "markers",
+    //         "layout": {
+    //             "icon-image": "{marker-symbol}-15",
+    //             "icon-allow-overlap": true
+    //         }
+    //     });
+    // });
     // Click Event
     mapObject.on('click', function (e) {
-      var features = mapObject.queryRenderedFeatures(e.point, { layers: ['markers'] });
+      var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
 
       if (!features.length) {
           return;
@@ -56,7 +56,7 @@ function locationMap() {
   // Use the same approach as above to indicate that the symbols are clickable
   // by changing the cursor style to 'pointer'.
   mapObject.on('mousemove', function (e) {
-      var features = mapObject.queryRenderedFeatures(e.point, { layers: ['markers'] });
+      var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
       mapObject.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
   }
