@@ -23,9 +23,8 @@ class MessageSection extends Component {
 
   render() {
     let messageListItems = []
-
     if (this.props.messages && this.props.messages.length > 0) {
-      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode)
+      let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode && msg.subGroupName === localStorage.subGroupName)
       // first message
       let message = filteredMessages[0]
       let nextName = filteredMessages.length > 1 ? filteredMessages[1].authorName : null
