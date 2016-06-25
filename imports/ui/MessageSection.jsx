@@ -9,7 +9,7 @@ export default class MessageSection extends Component {
     super(props, context);
     this.state = {
       thread: {
-        name: '#310480',
+        name: '#310530',
         id: 123
       }
     }
