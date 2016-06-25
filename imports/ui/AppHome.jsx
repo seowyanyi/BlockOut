@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { browserHistory } from 'react-router'
 
 function locationMap() {
     // Init Map
@@ -18,7 +19,7 @@ export default class AppHome extends Component {
   }
 
   goToChat() {
-
+    browserHistory.push('/chat')
   }
 
   render() {
@@ -26,7 +27,7 @@ export default class AppHome extends Component {
       <div className="apphome">
         <div id='map'></div>
         <h2>Home</h2>
-        <button onClick={this.props.goToChat.bind(this)}>Msg</button>
+        <button onClick={this.goToChat.bind(this)}>Msg</button>
       </div>
       )
   }

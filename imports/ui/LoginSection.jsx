@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './Logo.jsx';
+import { browserHistory } from 'react-router'
 
 export default class LoginSection extends Component {
 
@@ -22,7 +23,7 @@ export default class LoginSection extends Component {
 
   submitLoginDetails(e) {
     e.preventDefault()
-    this.props.onLogin(this.state.postalCode, this.state.displayName)
+    browserHistory.push('/home')
   }
 
   render() {

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { createContainer } from 'meteor/react-meteor-data';
+
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
+import { Messages } from '../api/messages.js'; 
 
-export default class MessageSection extends Component {
+class MessageSection extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -21,37 +24,40 @@ export default class MessageSection extends Component {
 
   render() {
     let messageListItems = []
- // first message
-    let message = this.props.messages[0]
-    messageListItems.push(
-      <MessageListItem
-        key={message._id}
-        message={message}
-        showName={true}
-      />
-    )     
-    for (let i=1; i<this.props.messages.length-1; ++i) {
-      let message = this.props.messages[i]
-      let nextName = this.props.messages[i+1].authorName
-      let prevName = this.props.messages[i-1].authorName
+    if (this.props.messages && this.props.messages.length > 0) {
+      // first message
+      let message = this.props.messages[0]
       messageListItems.push(
         <MessageListItem
           key={message._id}
           message={message}
-          showIcon={message.authorName == nextName ? false : true}
-          showName={message.authorName != prevName ? true : false}
+          showName={true}
         />
-      )      
+      )     
+      for (let i=1; i<this.props.messages.length-1; ++i) {
+        let message = this.props.messages[i]
+        let nextName = this.props.messages[i+1].authorName
+        let prevName = this.props.messages[i-1].authorName
+        messageListItems.push(
+          <MessageListItem
+            key={message._id}
+            message={message}
+            showIcon={message.authorName == nextName ? false : true}
+            showName={message.authorName != prevName ? true : false}
+          />
+        )      
+      }
+      // last message
+      message = this.props.messages[this.props.messages.length-1]
+      messageListItems.push(
+        <MessageListItem
+          key={message._id}
+          message={message}
+          showIcon={true}
+        />
+      )         
     }
-    // last message
-    message = this.props.messages[this.props.messages.length-1]
-    messageListItems.push(
-      <MessageListItem
-        key={message._id}
-        message={message}
-        showIcon={true}
-      />
-    )   
+
     return (
       <div className="message-section">
         <div className="message-thread-heading">
@@ -78,12 +84,11 @@ export default class MessageSection extends Component {
     let ul = ReactDOM.findDOMNode(this.refs.messageList);
     ul.scrollTop = ul.scrollHeight;
   }
-
-  /**
-   * Event handler for 'change' events coming from the MessageStore
-   */
-  _onChange() {
-    // this.setState(getStateFromStores());
-  }
-
 }
+
+export default createContainer(() => {
+  Meteor.subscribe('messages');
+  return {
+    messages: Messages.find({}, {sort:{createdAt:-1}}).fetch()
+  };
+}, MessageSection);

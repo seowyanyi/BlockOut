@@ -1,55 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Messages } from '../api/messages.js'; 
-import { Meteor } from 'meteor/meteor';
-import LoginSection from './LoginSection.jsx'
-import AppHome from './AppHome.jsx'
-import MessageSection from './MessageSection.jsx'
+import { browserHistory } from 'react-router'
 
-class App extends Component {
+export default class App extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      displayName: '',
-      postalCode: 0,
-      currentPage: ''
-    }
   }
 
-  login(postalCode, displayName) {
-    this.setState({postalCode: postalCode, displayName: displayName})
+  componentDidMount() {
+    browserHistory.push('/login')
   }
 
-  goToChat() {
-    this.setState({
-      currentPage: 'chat'
-    })
-  }
- 
   render() {
-    let content = <LoginSection onLogin={this.login.bind(this)}/>
-    if (this.state.currentPage === 'chat') {      
-      content = <MessageSection 
-        messages={this.props.messages}
-        displayName={this.state.displayName}
-        postalCode={this.state.postalCode}
-        />      
-    } else if (this.state.postalCode && this.state.displayName) {
-      content = <AppHome goToChat={this.goToChat.bind(this)}/>
-    }
-
     return (
       <div className="container">
-        {content}       
+        {this.props.children}             
       </div>
     )
   }
 }
-
-export default createContainer(() => {
-  Meteor.subscribe('messages');
-  return {
-    messages: Messages.find({}, {sort:{createdAt:-1}}).fetch()
-  };
-}, App);
