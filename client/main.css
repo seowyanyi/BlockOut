@@ -420,11 +420,9 @@ h1, h2, h3 {
   font-size: 25px;
   padding: 6px 10px;
 }
-<<<<<<< Updated upstream
 .clickable {
   cursor: pointer;
 }
-=======
 /*CHAT SIDEBAR*/
 .offcanvasSidebar {
   background-color: #fdac2b;
@@ -509,8 +507,3 @@ h1, h2, h3 {
   width: 90%;
   margin: 0 auto;
 }
-
-
-
-
->>>>>>> Stashed changes
