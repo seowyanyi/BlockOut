@@ -103,10 +103,10 @@ class MessageSection extends Component {
           <i className="fa fa-times closeSidebar"></i>
           <div className="user">
             <img src="./user1.jpg" />
-            <p>
+            <div>
               <h2>Louis</h2>
               <p>#437972</p>
-            </p>
+            </div>
           </div>
           <div className="hr"></div>
           <div className="search">

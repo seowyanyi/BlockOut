@@ -467,7 +467,7 @@ h1, h2, h3 {
   height: 70px;
   border-radius: 50%;
 }
-.offcanvasSidebar .user > p {
+.offcanvasSidebar .user > div {
   padding-left: 24px;
   color: #ffffff;
 }
