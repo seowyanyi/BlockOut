@@ -15,7 +15,7 @@ export default class MessageListItem extends Component {
           {this.props.showIcon ? <Avatar displayName={message.authorName} color={this.props.color}/> : ''}
           </div>
           <div className="message-content">
-            {this.props.showName ? <span className="message-author-name">{message.authorName}</span> : ''}
+            {this.props.showName ? <span className="message-author-name" style={{color:this.props.color}}>{message.authorName}</span> : ''}
             <div className="message-text">{message.text}</div>
             <div className={lastTimeClass}>
             {this.props.showIcon ? new Date(message.timestamp).toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}) : ''}

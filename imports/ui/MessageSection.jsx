@@ -40,9 +40,7 @@ class MessageSection extends Component {
     this.bindEventListeners()
     let currentColors = this.props.app.userColors
     this.props.messages.forEach(msg => {
-      if (!(msg.authorName in currentColors)) {
-        currentColors[msg.authorName] = randAvatarColor()
-      }
+      currentColors[msg.authorName] = randAvatarColor()      
     })
 
     const actions = bindActionCreators(Actions, this.props.dispatch);
