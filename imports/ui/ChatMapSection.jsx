@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
+import { Messages } from '../api/messages.js';
+import { browserHistory } from 'react-router'
 
 function locationMap() {
     // Init Map
@@ -35,6 +37,12 @@ function locationMap() {
       var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
       mapObject.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
+
+  setTimeout(function() {
+    console.log('moving center')
+    var testLL = new mapboxgl.LngLat(103.9474, 1.3721);
+    mapObject.panTo(testLL);
+  }, 5000)
 }
 
 
@@ -44,21 +52,29 @@ export default class ChatMapSection extends Component {
       setTimeout(function() {
         if ($('[data-id="chat-310530"]')) {
           $('[data-id="chat-310530"]').click(function() {
-            console.log('chat-310530')
-          });    
+            localStorage.postalCode = '310530'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));    
           $('[data-id="chat-310154"]').click(function() {
-            console.log('chat-310154')
-          });
+            localStorage.postalCode = '310154'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));
           $('[data-id="chat-310480"]').click(function() {
-            console.log('chat-310480')
-          });
+            localStorage.postalCode = '310480'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')          
+          }.bind(this));
           $('[data-id="chat-310177"]').click(function() {
-            console.log('chat-310177')
-          });                  
+            localStorage.postalCode = '310177'
+            localStorage.subGroupName = 'Main'
+            browserHistory.push('/chat')
+          }.bind(this));                  
         }        
-      }, 100)
+      }.bind(this), 100)
 
-    })        
+    }.bind(this))        
   }
 
   componentDidMount() {

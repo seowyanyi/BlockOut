@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router'
 import {getCurrentTab} from '../../client/helper'
 import ChatMapSection from './ChatMapSection.jsx'
 import EventSection from './EventSection.jsx'
+import Header from './Header.jsx'
 
 export default class AppHome extends Component {
   goToChat() {
@@ -26,6 +27,13 @@ export default class AppHome extends Component {
     browserHistory.push('/calendar')
   }
 
+  goToNewAddress(query) {
+    let url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&region=SG&key=AIzaSyAx4LGLUUO9e0mmamfG1wpAxuJfTzHYfn0'
+    $.get(url, function( data ) {
+      console.log(data)
+    });  
+  }
+
   render() {
     let currentTab = getCurrentTab()
     let chatMapBtnClass = ''
@@ -42,11 +50,7 @@ export default class AppHome extends Component {
     return (
       <div className="apphome">
         <div>
-          <div className="topbar">
-            <i className="fa fa-angle-left clickable"></i>
-            <h2>Home</h2>
-            <i className="fa fa-search clickable"></i>
-          </div>
+          <Header goToNewAddress={this.goToNewAddress.bind(this)}/>
           <div className="chatEventsToggle">
             <button onClick={this.goToChatMap.bind(this)} className={chatMapBtnClass}>CHAT</button>
             <button onClick={this.goToEvents.bind(this)} className={eventsBtnClass}>EVENTS</button>

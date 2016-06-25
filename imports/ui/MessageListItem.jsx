@@ -7,11 +7,12 @@ export default class MessageListItem extends Component {
     let message = this.props.message;
     const lastMessageClass = this.props.showIcon ? 'message-list-item last-message' : 'message-list-item';
     const lastTimeClass = this.props.showIcon ? 'message-time' : '';
+    const klass = `${lastMessageClass} ${message.authorName === localStorage.displayName ? 'owner' : ''}`
     return (
-      <li className={lastMessageClass}>
+      <li className={klass}>
         <div className="message-row">
           <div className="author">
-          {this.props.showIcon ? <Avatar displayName={message.authorName} /> : ''} 
+          {this.props.showIcon ? <Avatar displayName={message.authorName} /> : ''}
           </div>
           <div className="message-content">
             {this.props.showName ? <span className="message-author-name">{message.authorName}</span> : ''}
