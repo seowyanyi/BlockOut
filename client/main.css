@@ -427,6 +427,72 @@ div.author-icon {
 .owner .message-author-name {
   text-align: right;
 }
+.eventPopup {
+  width: 90%;
+  height: 200px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.eventPopup h2 {
+  background-color: #f3763a;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  font-family: 'source_sans_prolight', sans-serif;
+  font-size: 24px;
+}
+.eventPopup img {
+  height: 100px;
+  display: block;
+}
+.eventPopup .card {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex: 1;
+  padding-bottom: 48px;
+}
+.eventPopup .card h3, .eventPopup .card p {
+  color: #000000;
+  font-family: 'source_sans_prolight', sans-serif;
+  font-size: 14px;
+  text-align: left;
+  padding-top: 0;
+}
+.eventPopup .info {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 12px;
+}
+.eventPopup button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  margin-top: 0;
+  background-color: #f3763a;
+  width: 100%;
+  border: 0;
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
 /*COMPOSER*/
 .composer {
   padding: 5px;
@@ -903,6 +969,25 @@ div.author-icon {
 }
 
 @media (max-width: 360px) {
+  .eventPopup h2 {
+    font-size: 18px;
+  }
+  .eventPopup button {
+    font-size: 12px;
+  }
+  .eventPopup img {
+    height: 80px;
+  }
+  .eventPopup .info h3, .eventPopup .info p {
+    font-size: 12px;
+  }
+  .eventPopup .info {
+    padding-top: 6px;
+    padding-bottom: 24px;
+  }
+  .eventPopup .card {
+    padding-bottom: 86px;
+  }
     .eventItemsDay img {
         height: 80px;
     }
