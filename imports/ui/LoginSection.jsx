@@ -32,7 +32,7 @@ export default class LoginSection extends Component {
   submitLoginDetails(e) {
     e.preventDefault()
     let obj = {}
-    obj[localStorage.displayName] = randAvatarColor()
+    obj[this.state.displayName] = randAvatarColor()
     const actions = bindActionCreators(Actions, this.props.dispatch);
     actions.updateAppStatus({
       subGroupName: 'Main',
