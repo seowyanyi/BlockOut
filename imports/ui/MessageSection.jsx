@@ -59,11 +59,14 @@ class MessageSection extends Component {
   }
 
   sendMessage() {
-    var text = localStorage.postMessage.trim();
+    var text = this.props.app.composerText.trim();
     if (text) {
       Meteor.call('messages.insert', text, this.props.app.postalCode, this.props.app.subGroupName, localStorage.displayName);
     }    
-    localStorage.postMessage = ''    
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      composerText: ''
+    })           
   }
 
   render() {
@@ -157,6 +160,7 @@ class MessageSection extends Component {
             postalCode={this.props.app.postalCode} 
             displayName={localStorage.displayName}
             subGroupName={this.props.app.subGroupName}
+            composerText={this.props.app.composerText}
             />
           <i onClick={this.sendMessage.bind(this)} className="fa fa-paper-plane clickable"></i>
         </div>

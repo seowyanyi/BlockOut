@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
+import * as Actions from '../../client/actions/actions';
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 const ENTER_KEY_CODE = 13;
 
 export default class MessageComposer extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      text: ''
-    }
   }
 
   _onChange(event, value) {
-    this.setState({text: event.target.value})
-    localStorage.postMessage = event.target.value
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      composerText: event.target.value,
+    })
   }
 
   _onKeyDown(event) {
     if (event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault();
-      var text = this.state.text.trim();
+      var text = this.props.app.composerText.trim();
       if (text) {
         Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, this.props.displayName);
       }
-      this.setState({text: ''});
+      const actions = bindActionCreators(Actions, this.props.dispatch);
+      actions.updateAppStatus({
+        composerText: ''
+      })      
     }
   }
 
@@ -34,10 +39,18 @@ export default class MessageComposer extends Component {
         className="message-composer"
         name="message"
         placeholder="Post a message"
-        value={this.state.text}
+        value={this.props.app.composerText}
         onChange={this._onChange.bind(this)}
         onKeyDown={this._onKeyDown.bind(this)}
       />
     );
   }
 }
+
+
+function mapStateToProps(state) {
+  return {
+    app: state.app
+  };
+}
+export default connect(mapStateToProps)(MessageComposer)
