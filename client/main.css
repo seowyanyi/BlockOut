@@ -47,6 +47,7 @@ html, body {
   height: 100%;
   margin: 0 auto;
   font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 p, span, button {
   font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
