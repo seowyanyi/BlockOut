@@ -420,6 +420,97 @@ h1, h2, h3 {
   font-size: 25px;
   padding: 6px 10px;
 }
+<<<<<<< Updated upstream
 .clickable {
   cursor: pointer;
 }
+=======
+/*CHAT SIDEBAR*/
+.offcanvasSidebar {
+  background-color: #fdac2b;
+  position: absolute;
+  height: 100%;
+  width: 90%;
+  top: 0;
+  right: -10%;
+  -webkit-transition: right 0.5s cubic-bezier(.87,-.41,.19,1.44);
+  -moz-transition: right 0.5s cubic-bezier(.87,-.41,.19,1.44);
+  -ms-transition: right 0.5s cubic-bezier(.87,-.41,.19,1.44);
+  -o-transition: right 0.5s cubic-bezier(.87,-.41,.19,1.44);
+  transition: right 0.5s cubic-bezier(.87,-.41,.19,1.44);
+  
+}
+.closeSidebar {
+  position: absolute;
+  right: 64px;
+  top: 24px;
+  color: #ffffff;
+  font-size: 24px;
+}
+.offcanvasSidebar.off {
+  right: -90%;
+}
+.offcanvasSidebar .user {
+  padding: 36px 48px;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.offcanvasSidebar .user img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+.offcanvasSidebar .user > p {
+  padding-left: 24px;
+  color: #ffffff;
+}
+.offcanvasSidebar .channels {
+  padding-top: 24px;
+}
+.offcanvasSidebar .highlight, .offcanvasSidebar .currentChannel {
+  background-color: #ff7836;
+}
+.offcanvasSidebar ul {
+  list-style: none;
+}
+.offcanvasSidebar button {
+  font-size: 24px;
+  color: #ffffff;
+  padding: 10px 24px;
+}
+.offcanvasSidebar .addChannel {
+  padding-top: 24px;
+  padding-bottom: 12px;
+}
+.offcanvasSidebar textarea {
+  resize: none;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  height: 50px;
+  font-size: 24px;
+  padding: 12px 24px 12px 24px;
+}
+.addChannel ul {
+  display: none;
+}
+.hr {
+  height: 1px;
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0 auto;
+}
+
+
+
+
+>>>>>>> Stashed changes

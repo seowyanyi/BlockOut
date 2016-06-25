@@ -32,7 +32,7 @@ export default class NewSubGroup extends Component {
       <textarea
         id="newSubGroup"
         name="newSubGroup"
-        placeholder="Create new sub-group"
+        placeholder="Add New Group"
         value={this.state.newSubGroup}
         onChange={this._onChange.bind(this)}
         onKeyDown={this._onKeyDown.bind(this)}

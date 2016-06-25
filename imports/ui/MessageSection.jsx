@@ -21,6 +21,19 @@ class MessageSection extends Component {
     browserHistory.push('/home/chatmap')
   }
 
+  bindEventListeners() {
+      $(".message-section .fa-bars").click(function() {
+        $(".offcanvasSidebar").removeClass("off");
+      })
+      $(".offcanvasSidebar .fa-times").click(function() {
+        $(".offcanvasSidebar").addClass("off");
+      })
+    }
+
+  componentDidMount() {
+      this.bindEventListeners()  
+  }
+
   render() {
     let messageListItems = []
     if (this.props.messages && this.props.messages.length > 0) {
@@ -85,8 +98,37 @@ class MessageSection extends Component {
           <MessageComposer postalCode={localStorage.postalCode} displayName={localStorage.displayName}/>
           <i className="fa fa-paper-plane clickable"></i>
         </div>
-        <NewSubGroup />
+
+        <div className="offcanvasSidebar off">
+          <i className="fa fa-times closeSidebar"></i>
+          <div className="user">
+            <img src="./user1.jpg" />
+            <p>
+              <h2>Louis</h2>
+              <p>#437972</p>
+            </p>
+          </div>
+          <div className="hr"></div>
+          <div className="search">
+
+          </div>
+          <div className="channels">
+            <ul>
+              <li className="currentChannel"><button>#310490</button></li>
+              <li><button>#Announcements</button></li>
+              <li><button>#Events</button></li>
+              <li><button>#Foodies</button></li>
+            </ul>
+          </div>
+          <div className="addChannel">
+            <ul>
+              <li className="highlight"><button>Add New Channel</button></li>
+            </ul>
+            <NewSubGroup />
+          </div>
+        </div>
       </div>
+
     );
   }
 
