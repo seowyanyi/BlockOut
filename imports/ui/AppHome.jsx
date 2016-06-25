@@ -9,7 +9,7 @@ export default class AppHome extends Component {
   goToChat() {
     browserHistory.push('/chat')
   }
-  
+
   goToChatMap() {
     browserHistory.push('/home/chatmap')
   }
@@ -35,9 +35,9 @@ export default class AppHome extends Component {
       <div className="apphome">
         <div>
           <div className="topbar">
-            <i className="fa fa-angle-left"></i>
+            <i className="fa fa-angle-left clickable"></i>
             <h2>Home</h2>
-            <i className="fa fa-search"></i>
+            <i className="fa fa-search clickable"></i>
           </div>
           <div className="chatEventsToggle">
             <button onClick={this.goToChatMap.bind(this)} className={chatMapBtnClass}>CHAT</button>
@@ -50,7 +50,7 @@ export default class AppHome extends Component {
           <button onClick={this.goToChat.bind(this)}><i className="fa fa-comment-o"></i></button>
           <button><i className="fa fa-calendar"></i></button>
           <button><i className="fa fa-bars"></i></button>
-        </div>  
+        </div>
       </div>
       )
   }

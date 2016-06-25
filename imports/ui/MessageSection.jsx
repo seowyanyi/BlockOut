@@ -69,17 +69,17 @@ class MessageSection extends Component {
       <div className="message-section">
         <div className="message-thread-heading">
           <div onClick={this.goBack.bind(this)} className="backButton">
-            <i className="fa fa-angle-left"></i>
+            <i className="fa fa-angle-left clickable"></i>
           </div>
           <span>{`${localStorage.postalCode}: ${localStorage.subGroupName}`}</span>
-          <i className="fa fa-bars"></i>
+          <i className="fa fa-bars clickable"></i>
         </div>
         <ul className="message-list" ref="messageList">
           {messageListItems}
         </ul>
         <div className="composer">
           <MessageComposer postalCode={localStorage.postalCode} displayName={localStorage.displayName}/>
-          <i className="fa fa-paper-plane"></i>
+          <i className="fa fa-paper-plane clickable"></i>
         </div>
         <NewSubGroup />
       </div>

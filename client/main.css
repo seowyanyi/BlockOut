@@ -420,3 +420,6 @@ h1, h2, h3 {
   font-size: 25px;
   padding: 6px 10px;
 }
+.clickable {
+  cursor: pointer;
+}
