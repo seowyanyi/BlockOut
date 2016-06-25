@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Avatar from './Avatar.jsx'
 
 export default class MessageListItem extends Component {
   render() {
@@ -10,7 +11,7 @@ export default class MessageListItem extends Component {
       <li className={lastMessageClass}>
         <div className="message-row">
           <div className="author">
-            {this.props.showIcon ? <div className="author-icon"></div> : ''}          
+          {this.props.showIcon ? <Avatar displayName={message.authorName} /> : ''} 
           </div>
           <div className="message-content">
             {this.props.showName ? <span className="message-author-name">{message.authorName}</span> : ''}
