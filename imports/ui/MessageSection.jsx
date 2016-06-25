@@ -83,7 +83,13 @@ class MessageSection extends Component {
       }
     }
 
-    let filteredSubGroups = this.props.messages.filter(msg => msg.authorName === localStorage.displayName);
+    let filteredSubGroups = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode);
+    if (filteredSubGroups.length === 0) {
+      Meteor.call('messages.insert', `Welcome to Annoucements`, localStorage.postalCode, 'Annoucements', 'BlockOut');      
+      Meteor.call('messages.insert', `Welcome to Events`, localStorage.postalCode, 'Events', 'BlockOut');      
+      Meteor.call('messages.insert', `Welcome to Food`, localStorage.postalCode, 'Food', 'BlockOut');          
+    }
+
     let subGroups = _.uniq(_.pluck(filteredSubGroups, 'subGroupName'));
 
     let subGroupListItems = [];

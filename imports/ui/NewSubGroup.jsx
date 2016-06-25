@@ -21,7 +21,6 @@ export default class NewSubGroup extends Component {
       var subGroupName = this.state.subGroupName.trim();
       if (subGroupName) {
         Meteor.call('messages.insert', `Welcome to ${subGroupName}`, localStorage.postalCode, subGroupName, 'BlockOut');
-        Meteor.call('messages.insert', 'Hello world', localStorage.postalCode, subGroupName, localStorage.displayName);
         localStorage.subGroupName = subGroupName
       }
       this.setState({newSubGroup: ''});
