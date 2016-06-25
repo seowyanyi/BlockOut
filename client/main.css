@@ -46,7 +46,6 @@ html, body {
   max-width: 480px;
   height: 100%;
   margin: 0 auto;
-  background-color: grey;
   font-family: 'source_sans_prolight', Arial, Helvetica, sans-serif;
 }
 p, span, button {
@@ -157,6 +156,10 @@ h1, h2, h3 {
 }
 .apphome .topbar .fa-angle-left {
   opacity: 0;
+}
+.settings .topbar .fa-angle-left, .eventList .topbar .fa-angle-left {
+  opacity: 1;
+  cursor: pointer;
 }
 /*LOGIN PAGE*/
 .login-section {
@@ -396,7 +399,7 @@ h1, h2, h3 {
 .last-message {
   margin-bottom: 24px;
 }
-.owner {
+.owner .message-row {
   -webkit-flex-direction: row-reverse;
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
@@ -445,7 +448,7 @@ h1, h2, h3 {
 }
 /*CHAT SIDEBAR*/
 .hider {
-  background-color: grey;
+  background-color: #ffffff;
   position: absolute;
   top: 0;
   width: 100%;
@@ -540,3 +543,136 @@ h1, h2, h3 {
   width: 90%;
   margin: 0 auto;
 }
+/*EVENTS*/
+.eventList {
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+}
+.eventList .topbar {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
+.eventList ul {
+  list-style: none;
+}
+.eventItemsMonth {
+  padding-top: 50px;
+}
+.eventItemsMonth h3 {
+  background-color: #fe7b2a;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 5px;
+  font-family: 'source_sans_prolight', Arial, sans-serif;
+}
+.eventItemsDay h3 {
+  background-color: transparent;
+  color: #fe7b2a;
+  padding-left: 0;
+  padding-top: 10px;
+  text-align: left;
+}
+.eventItemsDay h4 {
+  padding: 12px 12px 0 12px;
+  color: #fe7b2a;
+}
+.eventItemsDay li {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  background-color: #f2f2f2;
+  margin: 12px auto;
+  position: relative;
+}
+.eventItemsDay li .info {
+  padding-left: 12px;
+}
+.eventItemsDay li .official:before {
+  content: 'PA Organized';
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #fe7b2a;
+  color: #ffffff;
+  padding: 2px 5px;
+}
+.eventItemsDay li span {
+  font-size: 14px;
+  display: inline-block;
+}
+.eventItemsDay span i {
+  padding-right: 6px;
+}
+.eventItemsDay span {
+  padding-right: 12px;
+}
+.eventItemsDay img {
+  height: 90px;
+  display: block;
+}
+.eventItemsDay .img {
+  position: relative;
+}
+.eventItemsDay .img:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-top: 90px solid transparent;
+  border-right: 90px solid #f2f2f2;
+}
+
+/*SETTINGS*/
+.settingsItems ul {
+  list-style: none;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  max-width: 300px;
+  height: 400px;
+  margin: 0 auto;
+}
+.fa-search, .fa-inactive {
+  border-radius: 50%;
+}
+.settingsItems li, .fa-search:active, .fa-inactive {
+  background-color: #ffffff;
+  -webkit-transition: background-color 0.3s ease;
+     -moz-transition: background-color 0.3s ease;
+      -ms-transition: background-color 0.3s ease;
+       -o-transition: background-color 0.3s ease;
+          transition: background-color 0.3s ease;
+}
+.settingsItems li:active, .fa-search:active, .fa-inactive:active {
+  background-color: #ffa93a;
+}
+.settingsItems img {
+  display: inline-block;
+  vertical-align: middle;
+  width: 60px;
+  height: 60px;
+}
+.settingsItems span {
+  color: #ffa93a;
+  font-size: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 26px;
+}
+
+
+
