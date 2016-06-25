@@ -11,6 +11,7 @@ export default class LoginSection extends Component {
       postalCode: 0,
       displayName: ''
     }
+    localStorage.subGroupName = 'Main'
   }
 
   _onChangePostalCode(event, value) {

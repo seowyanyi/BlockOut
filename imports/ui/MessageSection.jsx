@@ -72,7 +72,7 @@ class MessageSection extends Component {
           <div onClick={this.goBack.bind(this)} className="backButton">
             <i className="fa fa-angle-left"></i>
           </div>
-          <span>{`localStorage.postalCode: ${localStorage.subGroupName}`}</span>
+          <span>{`${localStorage.postalCode}: ${localStorage.subGroupName}`}</span>
           <i className="fa fa-bars"></i>
         </div>
         <ul className="message-list" ref="messageList">
