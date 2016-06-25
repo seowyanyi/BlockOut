@@ -20,8 +20,6 @@ export default class MessageComposer extends Component {
     if (event.keyCode === ENTER_KEY_CODE) {
       event.preventDefault();
       var text = this.state.text.trim();
-      console.log('enter key down here ' + text)
-
       if (text) {
         Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, this.props.displayName);
       }

@@ -15,12 +15,6 @@ export default class LoginSection extends Component {
       postalCode: '',
       displayName: ''
     }
-    const actions = bindActionCreators(Actions, this.props.dispatch);
-    actions.updateAppStatus({
-      subGroupName: 'Main',
-      postalCode: ''
-    })
-    localStorage.avatarBgColor = randAvatarColor();
   }
 
   _onChangePostalCode(event, value) {
@@ -34,9 +28,12 @@ export default class LoginSection extends Component {
   submitLoginDetails(e) {
     e.preventDefault()
     const actions = bindActionCreators(Actions, this.props.dispatch);
+    let obj = {}
+    obj[localStorage.displayName] = randAvatarColor()
     actions.updateAppStatus({
       subGroupName: 'Main',
-      postalCode: this.state.postalCode
+      postalCode: this.state.postalCode,
+      userColors: obj
     })    
     localStorage.displayName = this.state.displayName
     browserHistory.push('/chat')

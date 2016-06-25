@@ -17,7 +17,7 @@ export default class Avatar extends Component {
     }
     else {
       return (
-        <div className="author-icon" style={{backgroundColor: localStorage.avatarBgColor}}>
+        <div className="author-icon" style={{backgroundColor: this.props.color}}>
           {content}
         </div>
       )

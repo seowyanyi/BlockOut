@@ -12,7 +12,7 @@ export default class MessageListItem extends Component {
       <li className={klass}>
         <div className="message-row">
           <div className="author">
-          {this.props.showIcon ? <Avatar displayName={message.authorName} /> : ''}
+          {this.props.showIcon ? <Avatar displayName={message.authorName} color={this.props.color}/> : ''}
           </div>
           <div className="message-content">
             {this.props.showName ? <span className="message-author-name">{message.authorName}</span> : ''}

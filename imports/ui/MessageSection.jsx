@@ -11,6 +11,7 @@ import * as Actions from '../../client/actions/actions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {composeWithTracker} from 'react-komposer';
+import { randAvatarColor } from '../../client/helper.js'
 
 class MessageSection extends Component {
 
@@ -36,7 +37,18 @@ class MessageSection extends Component {
     }
 
   componentDidMount() {
-      this.bindEventListeners()
+    this.bindEventListeners()
+    let currentColors = this.props.app.userColors
+    this.props.messages.forEach(msg => {
+      if (!(msg.authorName in currentColors)) {
+        currentColors[msg.authorName] = randAvatarColor()
+      }
+    })
+
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    actions.updateAppStatus({
+      userColors: currentColors
+    })        
   }
 
   goToSubgroup(subGroupName) {
@@ -49,6 +61,9 @@ class MessageSection extends Component {
 
   render() {
     let messageListItems = []
+    const actions = bindActionCreators(Actions, this.props.dispatch);
+    const userColors = this.props.app.userColors
+
     if (this.props.messages && this.props.messages.length > 0) {
       let filteredMessages = this.props.messages.filter(msg => msg.postalCode === this.props.app.postalCode && msg.subGroupName === this.props.app.subGroupName)
 
@@ -56,12 +71,14 @@ class MessageSection extends Component {
         // first message
         let message = filteredMessages[0]
         let nextName = filteredMessages.length > 1 ? filteredMessages[1].authorName : null
+
         messageListItems.push(
           <MessageListItem
             key={message._id}
             message={message}
             showIcon={message.authorName == nextName ? false : true}
             showName={true}
+            color={userColors[message.authorName]}
           />
         )
         for (let i=1; i<filteredMessages.length-1; ++i) {
@@ -74,6 +91,7 @@ class MessageSection extends Component {
               message={message}
               showIcon={message.authorName == nextName ? false : true}
               showName={message.authorName != prevName ? true : false}
+              color={userColors[message.authorName]}
             />
           )
         }
@@ -88,6 +106,7 @@ class MessageSection extends Component {
               message={message}
               showIcon={true}
               showName={message.authorName != prevName ? true : false}
+              color={userColors[message.authorName]}
             />
           )
         }
