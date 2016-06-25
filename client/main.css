@@ -788,7 +788,7 @@ div.author-icon {
 .eventDetail .join {
   display: block;
   background-color: #ff7836;
-  padding: 10px;
+  padding: 6px 10px;
   text-align: center;
   outline: none;
   border: none;
@@ -798,7 +798,40 @@ div.author-icon {
   font-size: 18px;
   border-radius: 10px;
 }
-
+/*EVENT CONFIRM*/
+.apphome.eventConfirm {
+  display: block;
+}
+.eventConfirm .topbar{
+  position: fixed;
+  width: 100%;
+}
+.eventConfirm .fa-search {
+  opacity: 0;
+}
+.eventConfirm .tick {
+  padding-top: 70px;
+  text-align: center;
+  font-size: 120px;
+  color: #f9a048;
+}
+.eventConfirm .desc {
+  width: 70%;
+  margin: 0 auto;
+}
+.eventConfirm .button button {
+  display: block;
+  margin: 24px auto;
+  background-color: #ff7836;
+  padding: 6px 10px;
+  text-align: center;
+  outline: none;
+  border: none;
+  width: 80%;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 10px;
+}
 /*CALENDAR*/
 .apphome.calendar {
   -webkit-justify-content: flex-start;

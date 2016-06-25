@@ -6,13 +6,16 @@ export default class EventDetail extends Component {
 	goToEventList() {
 	    browserHistory.push('/eventlist')
 	  }
+	  joinEvent() {
+	    browserHistory.push('/eventconfirm')
+	  }
 
   render() {
     return (
         <div className="apphome eventDetail">
 	        <div>
 	          <div className="topbar">
-	          <div onClick={this.goToEventList.bind(this)}  className="backButton">
+	          <div onClick={this.goToEventList.bind(this)} className="backButton">
 	            <i className="fa fa-angle-left clickable"></i>
 	          </div>	
 	            <h2>Event Detail</h2>
@@ -60,7 +63,7 @@ export default class EventDetail extends Component {
 		        </div>
 	        </div>
 	        <div className="info">
-	        	<button className="join">Join!</button>
+	        	<button onClick={this.joinEvent.bind(this)} className="join">Join!</button>
 	        </div>
 	      </div>
       )
