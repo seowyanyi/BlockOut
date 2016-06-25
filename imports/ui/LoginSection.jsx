@@ -29,6 +29,7 @@ export default class LoginSection extends Component {
     return (
       <div className="login-section">
       <Logo />
+      <h2>BlockOut</h2>
       <h3>Hi there!</h3>
         <form>
           <fieldset>
