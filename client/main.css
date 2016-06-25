@@ -175,10 +175,11 @@ h1, h2, h3 {
 /*LOGIN PAGE*/
 .login-section {
   background: #fe7b2a; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, #fe7b2a 0%, #ffd139 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg, #fe7b2a 0%,#ffd139 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url(./bgoverlay.png), -moz-linear-gradient(-45deg, #fe7b2a 0%, #ffd139 100%); /* FF3.6-15 */
+  background: url(./bgoverlay.png), -webkit-linear-gradient(-45deg, #fe7b2a 0%,#ffd139 100%); /* Chrome10-25,Safari5.1-6 */
+  background: url(./bgoverlay.png), linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe7b2a', endColorstr='#ffd139',GradientType=1 );
+  background-size: cover;
   height: 100%;
   display: -webkit-flex;
   display: -moz-flex;
@@ -426,6 +427,72 @@ div.author-icon {
 }
 .owner .message-author-name {
   text-align: right;
+}
+.eventPopup {
+  width: 90%;
+  height: 200px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+.eventPopup h2 {
+  background-color: #f3763a;
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 6px;
+  font-family: 'source_sans_prolight', sans-serif;
+  font-size: 24px;
+}
+.eventPopup img {
+  height: 100px;
+  display: block;
+}
+.eventPopup .card {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex: 1;
+  padding-bottom: 48px;
+}
+.eventPopup .card h3, .eventPopup .card p {
+  color: #000000;
+  font-family: 'source_sans_prolight', sans-serif;
+  font-size: 14px;
+  text-align: left;
+  padding-top: 0;
+}
+.eventPopup .info {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-top: 18px;
+  padding-bottom: 12px;
+}
+.eventPopup button {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  margin-top: 0;
+  background-color: #f3763a;
+  width: 100%;
+  border: 0;
+  font-size: 18px;
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 /*COMPOSER*/
 .composer {
@@ -903,6 +970,25 @@ div.author-icon {
 }
 
 @media (max-width: 360px) {
+  .eventPopup h2 {
+    font-size: 18px;
+  }
+  .eventPopup button {
+    font-size: 12px;
+  }
+  .eventPopup img {
+    height: 80px;
+  }
+  .eventPopup .info h3, .eventPopup .info p {
+    font-size: 12px;
+  }
+  .eventPopup .info {
+    padding-top: 6px;
+    padding-bottom: 24px;
+  }
+  .eventPopup .card {
+    padding-bottom: 86px;
+  }
     .eventItemsDay img {
         height: 80px;
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Logo from './Logo.jsx';
+import EventCard from './EventCard.jsx';
 import { browserHistory } from 'react-router'
 import { randAvatarColor } from '../../client/helper.js'
 import * as Actions from '../../client/actions/actions';
