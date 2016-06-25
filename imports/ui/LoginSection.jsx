@@ -12,6 +12,9 @@ import {composeWithTracker} from 'react-komposer';
 
 
 export default class LoginSection extends Component {
+  componentDidMount() {
+      window.scrollTo(0,1);  
+  }
   
   constructor(props, context) {
     super(props, context);

@@ -181,7 +181,9 @@ h1, h2, h3 {
   background: url(./bgoverlay.png), linear-gradient(135deg, #fe7b2a 0%,#ffd139 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fe7b2a', endColorstr='#ffd139',GradientType=1 );
   background-size: cover;
+  position: absolute;
   height: 120%;
+  width: 100%;
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
