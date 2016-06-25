@@ -14,6 +14,7 @@ export default class MessageComposer extends Component {
 
   _onChange(event, value) {
     this.setState({text: event.target.value})
+    localStorage.postMessage = event.target.value
   }
 
   _onKeyDown(event) {

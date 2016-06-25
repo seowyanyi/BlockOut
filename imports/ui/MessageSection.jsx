@@ -12,6 +12,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {composeWithTracker} from 'react-komposer';
 import { randAvatarColor } from '../../client/helper.js'
+import { Meteor } from 'meteor/meteor';
 
 class MessageSection extends Component {
 
@@ -55,6 +56,14 @@ class MessageSection extends Component {
       subGroupName: subGroupName
     })    
     $(".offcanvasSidebar").addClass("off");    
+  }
+
+  sendMessage() {
+    var text = localStorage.postMessage.trim();
+    if (text) {
+      Meteor.call('messages.insert', text, this.props.app.postalCode, this.props.app.subGroupName, localStorage.displayName);
+    }    
+    localStorage.postMessage = ''    
   }
 
   render() {
@@ -149,7 +158,7 @@ class MessageSection extends Component {
             displayName={localStorage.displayName}
             subGroupName={this.props.app.subGroupName}
             />
-          <i className="fa fa-paper-plane clickable"></i>
+          <i onClick={this.sendMessage.bind(this)} className="fa fa-paper-plane clickable"></i>
         </div>
 
         <div className="hider">
