@@ -11,6 +11,7 @@ import EventList from '../imports/ui/EventList.jsx'
 import Settings from '../imports/ui/Settings.jsx'
 import Calendar from '../imports/ui/Calendar.jsx'
 import EventDetail from '../imports/ui/EventDetail.jsx'
+import EventConfirm from '../imports/ui/EventConfirm.jsx'
 
 export default (
   <Route path='/' component={App}>
@@ -24,7 +25,8 @@ export default (
         <Route path='eventlist' component={EventList} />                
         <Route path='settings' component={Settings} />                
         <Route path='calendar' component={Calendar} />                
-        <Route path='event_detail' component={EventDetail} />                
+        <Route path='event_detail' component={EventDetail} />  
+        <Route path='eventconfirm' component={EventConfirm} />                
         <Route path='*' component={_404} />
     </Route>
   </Route>
