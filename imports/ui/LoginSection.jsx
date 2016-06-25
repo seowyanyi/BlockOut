@@ -7,6 +7,7 @@ import { randAvatarColor } from '../../client/helper.js'
 import * as Actions from '../../client/actions/actions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import {composeWithTracker} from 'react-komposer';
 
 export default class LoginSection extends Component {
 
@@ -28,14 +29,18 @@ export default class LoginSection extends Component {
 
   submitLoginDetails(e) {
     e.preventDefault()
-    const actions = bindActionCreators(Actions, this.props.dispatch);
     let obj = {}
     obj[localStorage.displayName] = randAvatarColor()
+    const actions = bindActionCreators(Actions, this.props.dispatch);
     actions.updateAppStatus({
       subGroupName: 'Main',
       postalCode: this.state.postalCode,
       userColors: obj
     })    
+    // let messages = this.props.messages.filter(msg => msg.postalCode === this.state.postalCode)
+    // if (messages.length === 0) {
+    //     Meteor.call('messages.insert', `Welcome to #${this.state.postalCode}_Main`, this.state.postalCode, 'Main', 'BlockOut');
+    // }
     localStorage.displayName = this.state.displayName
     browserHistory.push('/chat')
   }
@@ -70,11 +75,18 @@ export default class LoginSection extends Component {
   }
 
 }
+function composer(props, onData) {
+  if (Meteor.subscribe('messages').ready()) {
+    const messages = Messages.find({}, {sort:{createdAt:-1}}).fetch()
+    onData(null, {messages});
+  };
+};
+
+const MeteorMessagesComp = composeWithTracker(composer)(LoginSection);
 
 function mapStateToProps(state) {
   return {
     app: state.app
   };
 }
-
 export default connect(mapStateToProps)(LoginSection)
