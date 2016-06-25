@@ -5,7 +5,9 @@ import { browserHistory } from 'react-router'
 import MessageComposer from './MessageComposer.jsx';
 import MessageListItem from './MessageListItem.jsx';
 import { Messages } from '../api/messages.js';
-import NewSubGroup from './NewSubGroup.jsx'
+import NewSubGroup from './NewSubGroup.jsx';
+import Avatar from './Avatar.jsx';
+import SubGroupListItem from './SubGroupListItem';
 
 class MessageSection extends Component {
 
@@ -31,14 +33,14 @@ class MessageSection extends Component {
     }
 
   componentDidMount() {
-      this.bindEventListeners()  
+      this.bindEventListeners()
   }
 
   render() {
     let messageListItems = []
     if (this.props.messages && this.props.messages.length > 0) {
       let filteredMessages = this.props.messages.filter(msg => msg.postalCode === localStorage.postalCode && msg.subGroupName === localStorage.subGroupName)
-      
+
       if (filteredMessages.length > 0) {
         // first message
         let message = filteredMessages[0]
@@ -79,7 +81,17 @@ class MessageSection extends Component {
           )
         }
       }
-  
+
+    }
+
+    let filteredSubGroups = this.props.messages.filter(msg => msg.authorName === localStorage.displayName);
+    let subGroups = _.uniq(_.pluck(filteredSubGroups, 'subGroupName'));
+    console.table(subGroups);
+    let subGroupListItems = [];
+    for (let i=0; i<subGroups.length; i++) {
+      subGroupListItems.push(
+        <SubGroupListItem subGroupName={subGroups[i]}/>
+      );
     }
 
     return (
@@ -103,12 +115,12 @@ class MessageSection extends Component {
         </div>
 
         <div className="offcanvasSidebar off">
-          <i className="fa fa-times closeSidebar"></i>
+          <i className="fa fa-times closeSidebar clickable"></i>
           <div className="user">
-            <img src="./user1.jpg" />
+            <Avatar displayName={localStorage.displayName} />
             <div>
-              <h2>Louis</h2>
-              <p>#437972</p>
+              <h2>{localStorage.displayName}</h2>
+              <p>{`#${localStorage.postalCode}`}</p>
             </div>
           </div>
           <div className="hr"></div>
@@ -117,10 +129,7 @@ class MessageSection extends Component {
           </div>
           <div className="channels">
             <ul>
-              <li className="currentChannel"><button>#310490</button></li>
-              <li><button>#Announcements</button></li>
-              <li><button>#Events</button></li>
-              <li><button>#Foodies</button></li>
+              {subGroupListItems}
             </ul>
           </div>
           <div className="addChannel">
