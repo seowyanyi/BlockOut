@@ -37,6 +37,12 @@ function locationMap() {
       var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
       mapObject.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
+
+  setTimeout(function() {
+    console.log('moving center')
+    var testLL = new mapboxgl.LngLat(103.9474, 1.3721);
+    mapObject.panTo(testLL);
+  }, 5000)
 }
 
 
