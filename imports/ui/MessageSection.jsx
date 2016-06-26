@@ -21,10 +21,6 @@ class MessageSection extends Component {
     super(props, context);
   }
 
-  componentDidMount() {
-    this._scrollToBottom();
-  }
-
   goBack() {
     browserHistory.push('/home/chatmap')
   }
@@ -39,11 +35,28 @@ class MessageSection extends Component {
     }
 
   componentDidMount() {
+    this._scrollToBottom();
+    setTimeout(function() {
+      console.log(this.props.app.postalCode)
+      console.log(this.props.app.subGroupName)
+      if (!this.props.app.postalCode && !this.props.app.subGroupName) {
+      console.log('please login')
+      browserHistory.push('/login')
+      }
+    }.bind(this), 500)
+
     this.bindEventListeners()
     let currentColors = this.props.app.userColors
-    this.props.messages.forEach(msg => {
-      currentColors[msg.authorName] = randAvatarColor()      
-    })
+    if (!currentColors) {
+      currentColors = {}
+    }
+
+    if (this.props.messages) {
+      this.props.messages.forEach(msg => {
+        currentColors[msg.authorName] = randAvatarColor()      
+      })
+    }
+
 
     const actions = bindActionCreators(Actions, this.props.dispatch);
     actions.updateAppStatus({
@@ -148,7 +161,7 @@ class MessageSection extends Component {
           }
    
         }
-      } else {
+      } else if (this.props.app.postalCode) {
         Meteor.call('messages.insert', `Welcome to Announcements`, this.props.app.postalCode, 'Announcements', 'BlockOut');      
         Meteor.call('messages.insert', `Welcome to Events`, this.props.app.postalCode, 'Events', 'BlockOut');      
         Meteor.call('messages.insert', `Welcome to Food`, this.props.app.postalCode, 'Food', 'BlockOut');                  
