@@ -9,8 +9,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {composeWithTracker} from 'react-komposer';
 
-
-
 export default class LoginSection extends Component {
   componentDidMount() {
       window.scrollTo(0,1);  
@@ -42,10 +40,6 @@ export default class LoginSection extends Component {
       postalCode: this.state.postalCode,
       userColors: obj
     })    
-    // let messages = this.props.messages.filter(msg => msg.postalCode === this.state.postalCode)
-    // if (messages.length === 0) {
-    //     Meteor.call('messages.insert', `Welcome to #${this.state.postalCode}_Main`, this.state.postalCode, 'Main', 'BlockOut');
-    // }
     localStorage.displayName = this.state.displayName
     browserHistory.push('/chat')
   }

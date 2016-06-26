@@ -148,16 +148,16 @@ class MessageSection extends Component {
           }
    
         }
+      } else {
+        Meteor.call('messages.insert', `Welcome to Announcements`, this.props.app.postalCode, 'Announcements', 'BlockOut');      
+        Meteor.call('messages.insert', `Welcome to Events`, this.props.app.postalCode, 'Events', 'BlockOut');      
+        Meteor.call('messages.insert', `Welcome to Food`, this.props.app.postalCode, 'Food', 'BlockOut');                  
+        Meteor.call('messages.insert', "Welcome to #" + this.props.app.postalCode + "'s Main chat group! Create subgroups from the left :)", this.props.app.postalCode , 'Main', 'BlockOut');                          
       }
     }
 
     let filteredSubGroups = this.props.messages.filter(msg => msg.postalCode === this.props.app.postalCode);
-    if (filteredSubGroups.length === 0) {
-      // Meteor.call('messages.insert', `Welcome to Annoucements`, this.props.app.postalCode, 'Annoucements', 'BlockOut');      
-      // Meteor.call('messages.insert', `Welcome to Events`, this.props.app.postalCode, 'Events', 'BlockOut');      
-      // Meteor.call('messages.insert', `Welcome to Food`, this.props.app.postalCode, 'Food', 'BlockOut');          
-    }
-
+ 
     let subGroups = _.uniq(_.pluck(filteredSubGroups, 'subGroupName'));
 
     let subGroupListItems = [];
