@@ -40,6 +40,8 @@ function locationMap() {
       var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
       mapObject.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
+  // Add zoom and rotation controls to the map.
+  mapObject.addControl(new mapboxgl.Navigation());
 
   // setTimeout(function() {
   //   console.log('moving center')
