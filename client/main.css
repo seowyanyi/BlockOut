@@ -365,15 +365,15 @@ h1, h2, h3 {
   bottom: 0px;
 }
 div.author-icon {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   padding: 0 !important;
   color: white;
-  line-height: 50px;
+  line-height: 40px;
 }
 .author-icon.blockout {
   background-color: #ffa93a;
@@ -433,33 +433,33 @@ div.author-icon {
 }
 .eventPopup {
   width: 90%;
-  height: 200px;
   background-color: #ffffff;
-  margin: 0 auto;
+  margin: 12px auto;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
 }
-.eventPopup h2 {
+.eventPopup > h2 {
   background-color: #f3763a;
   width: 100%;
   padding-top: 8px;
   padding-bottom: 6px;
   font-family: 'source_sans_prolight', sans-serif;
   font-size: 24px;
+  text-align: center;
+  color: #ffffff;
 }
 .eventPopup img {
   height: 100px;
   display: block;
 }
-.eventPopup .card {
+.eventPopup > .card {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flex;
   display: -o-flex;
   display: flex;
   flex: 1;
-  padding-bottom: 48px;
 }
 .eventPopup .card h3, .eventPopup .card p {
   color: #000000;
@@ -484,10 +484,6 @@ div.author-icon {
   padding-bottom: 12px;
 }
 .eventPopup button {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   display: block;
   margin-top: 0;
   background-color: #f3763a;
@@ -496,6 +492,7 @@ div.author-icon {
   font-size: 18px;
   padding-top: 6px;
   padding-bottom: 6px;
+  color: #ffffff;
 }
 /*COMPOSER*/
 .composer {
@@ -633,7 +630,7 @@ div.author-icon {
 }
 .eventList .topbar {
   position: fixed;
-  width: 100%;
+  width: 480px;
   z-index: 999;
 }
 .eventList ul {
@@ -718,7 +715,7 @@ div.author-icon {
 }
 .eventDetail .topbar {
   position: fixed;
-  width: 100%;
+  width: 480px;
   height: 50px;
 }
 .eventDetail .topbar .fa-angle-left {
@@ -874,7 +871,7 @@ div.author-icon {
 }
 .eventConfirm .topbar{
   position: fixed;
-  width: 100%;
+  width: 480px;
 }
 .eventConfirm .fa-search {
   opacity: 0;
@@ -907,20 +904,23 @@ div.author-icon {
   -webkit-justify-content: flex-start;
   -ms-flex-pack: flex-start;
   justify-content: flex-start;
+  position: relative;
 }
 .calendar .topbar {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  position: fixed;
+  width: 480px;
 }
 .calendar-content img {
   width: 100%;
+  padding-top: 50px;
 }
 .calendar .bottombar {
   position: fixed;
+  width: 480px;
   bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 /*SETTINGS*/
@@ -990,7 +990,7 @@ div.author-icon {
     padding-bottom: 24px;
   }
   .eventPopup .card {
-    padding-bottom: 86px;
+    /*padding-bottom: 86px;*/
   }
     .eventItemsDay img {
         height: 80px;
