@@ -26,7 +26,7 @@ export default class MessageComposer extends Component {
       event.preventDefault();
       var text = this.props.app.composerText.trim();
       if (text) {
-        if (text === '#events') {
+        if (text === '#events' || text === '#event') {
           Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, 'LIST_OF_EVENTS');          
         } else {
           Meteor.call('messages.insert', text, this.props.postalCode, this.props.subGroupName, this.props.displayName);          

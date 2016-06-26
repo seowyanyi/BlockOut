@@ -62,8 +62,12 @@ class MessageSection extends Component {
   sendMessage() {
     var text = this.props.app.composerText.trim();
     if (text) {
-      Meteor.call('messages.insert', text, this.props.app.postalCode, this.props.app.subGroupName, localStorage.displayName);
-    }    
+      if (text === '#events' || text === '#event') {
+          Meteor.call('messages.insert', text, this.props.app.postalCode, this.props.app.subGroupName, 'LIST_OF_EVENTS');          
+      } else {
+          Meteor.call('messages.insert', text, this.props.app.postalCode, this.props.app.subGroupName, localStorage.displayName);
+      }
+    } 
     const actions = bindActionCreators(Actions, this.props.dispatch);
     actions.updateAppStatus({
       composerText: ''
