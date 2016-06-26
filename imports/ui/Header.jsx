@@ -13,6 +13,9 @@ export default class Header extends Component {
   onSubmitSearch(e) {
     e.preventDefault()
     this.props.goToNewAddress(this.state.query)
+    this.setState({
+      isSearch: false
+    })
   }
 
   onChange(event) {

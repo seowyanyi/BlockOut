@@ -30,7 +30,12 @@ export default class AppHome extends Component {
   goToNewAddress(query) {
     let url = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + query + '&region=SG&key=AIzaSyAx4LGLUUO9e0mmamfG1wpAxuJfTzHYfn0'
     $.get(url, function( data ) {
-      console.log(data)
+      if (data && data.results && data.results.length > 0) {
+        let lat = data.results[0].geometry.location.lat
+        let lng =  data.results[0].geometry.location.lng
+        var newLL = new mapboxgl.LngLat(lng, lat);
+        window.mapObject.panTo(newLL);
+      }
     });  
   }
 

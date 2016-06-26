@@ -6,10 +6,11 @@ import * as Actions from '../../client/actions/actions';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+
 function locationMap() {
     // Init Map
     mapboxgl.accessToken = 'pk.eyJ1IjoibGF1aXNlcyIsImEiOiJjaXB0dzVjaTcwNm8zZnVtMmRoaGZ1NHhmIn0.C8Q7Qd551av2yKSKIVqN2Q';
-    var mapObject = new mapboxgl.Map({
+      var mapObject = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/lauises/ciptw64fj003ddmnodbxt0hv8', //stylesheet location
         center: [103.847451210, 1.33233697624], // starting position
@@ -40,12 +41,7 @@ function locationMap() {
       var features = mapObject.queryRenderedFeatures(e.point, { layers: ['toapayoh'] });
       mapObject.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
   });
-
-  // setTimeout(function() {
-  //   console.log('moving center')
-  //   var testLL = new mapboxgl.LngLat(103.9474, 1.3721);
-  //   mapObject.panTo(testLL);
-  // }, 5000)
+  window.mapObject = mapObject
 }
 
 
