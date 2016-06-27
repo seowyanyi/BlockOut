@@ -250,7 +250,7 @@ class MessageSection extends Component {
 }
 function composer(props, onData) {
   if (Meteor.subscribe('messages').ready()) {
-    const messages = Messages.find({}, {sort:{createdAt:-1}}).fetch()
+    const messages = Messages.find({}, {sort:{timestamp:1}}).fetch()
     onData(null, {messages});
   };
 };
