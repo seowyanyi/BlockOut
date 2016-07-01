@@ -13,7 +13,7 @@ A prototype of a neighbourhood-based chat group with event sharing features. Bui
 
 [http://justmeteor.com/blog/deploy-to-production-on-heroku/](http://justmeteor.com/blog/deploy-to-production-on-heroku/)
 
-[blockout.herokuapp.com](blockout.herokuapp.com)
+[http://blockout.herokuapp.com](http://blockout.herokuapp.com)
 
 **Useful links**
 
