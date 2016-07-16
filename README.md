@@ -3,7 +3,7 @@ BlockOut
 
 A prototype of a neighbourhood-based chat group with event sharing features. Built in 2 days for the HDB Cool Ideas Hackathon. Built with React and Meteor.
 
-[http://blockout.herokuapp.com (join postal code 310530 for our popular chatroom)](http://blockout.herokuapp.com)
+[http://blockout.herokuapp.com](http://blockout.herokuapp.com) (join postal code 310530 for our popular chatroom)
 
 
 **Running locally**
