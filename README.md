@@ -3,6 +3,9 @@ BlockOut
 
 A prototype of a neighbourhood-based chat group with event sharing features. Built in 2 days for the HDB Cool Ideas Hackathon. Built with React and Meteor.
 
+[http://blockout.herokuapp.com (join postal code 310530 for our popular chatroom)](http://blockout.herokuapp.com)
+
+
 **Running locally**
 
 `meteor npm install` to install npm packages
@@ -12,8 +15,6 @@ A prototype of a neighbourhood-based chat group with event sharing features. Bui
 **Deploying**
 
 [http://justmeteor.com/blog/deploy-to-production-on-heroku/](http://justmeteor.com/blog/deploy-to-production-on-heroku/)
-
-[http://blockout.herokuapp.com](http://blockout.herokuapp.com)
 
 **Useful links**
 
